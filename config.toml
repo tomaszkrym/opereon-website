@@ -1,7 +1,6 @@
 baseURL = "http://opereon.io"
 languageCode = "en-us"
 title = "Opereon"
-theme = "whisper"
 
 pygmentsCodeFences = true
 pygmentsCodefencesGuessSyntax = true
