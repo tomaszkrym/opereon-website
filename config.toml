@@ -12,17 +12,18 @@ url = "/"
 weight = 1
 
 [[menu.main]]
-name = "Blog"
-url = "/posts/"
-weight = 2
-
-[[menu.main]]
-name = "Docs"
+name = "Documentation"
 url = "/docs/"
 weight = 2
 
+[[menu.main]]
+name = "Blog"
+url = "/posts/"
+weight = 3
+
 [params]
-google_analytics_id=""
+mainSections = ["posts", "docs"]
+google_analytics_id = ""
 
 [params.logo]
 mobile = "/images/logo.svg"
