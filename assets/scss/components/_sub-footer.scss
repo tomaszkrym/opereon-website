@@ -1,5 +1,5 @@
 .sub-footer {
-  background: #f4f5fb;
+  background: $black;
   padding-top: 20px;
   padding-bottom: 20px;
   @include media-breakpoint-up(md) {
@@ -20,7 +20,7 @@
       li {
         list-style: none;
         display: block;
-        color: #333;
+        color: $body-color;
         font-size: 0.9rem;
         line-height: 1.8;
         font-weight: bold;
@@ -29,7 +29,7 @@
           color: #ffffff;
         }
         a {
-          color: #333;
+          color: $body-color;
           text-decoration: none;
           &:hover {
             text-decoration: underline;
@@ -44,7 +44,7 @@
         }
         &.zerostatic {
           a {
-            color: #333;
+            color: $body-color;
           }
         }
       }

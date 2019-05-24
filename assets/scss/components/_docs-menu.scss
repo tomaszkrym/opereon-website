@@ -20,9 +20,9 @@
         }
       }
       a {
-        color: $black;
+        color: $primary;
         &:hover {
-          color: $primary;
+          color: lighten($primary, 10%);
         }
       }
     }

@@ -1,12 +1,10 @@
-<div class='header'>
-  <div class="container">
-    <div class="logo">
-      <a href="{{ .Site.BaseURL }}"><img alt="Logo" src="{{ .Site.Params.logo.standard | relURL }}" /></a>
-    </div>
-    <div class="logo-mobile">
-      <a href="{{ .Site.BaseURL }}"><img alt="Logo" src="{{ .Site.Params.logo.mobile | relURL }}" /></a>
-    </div>
-    {{ partial "main-menu.html" . }}
-    {{ partial "hamburger.html" . }}
+<div class='header' style="padding: .5rem 1.5rem;">
+  <div class="logo">
+    <a href="{{ .Site.BaseURL }}"><img alt="Logo" src="{{ .Site.Params.logo.standard | relURL }}" style="width: 75%;"/></a>
   </div>
+  <div class="logo-mobile">
+    <a href="{{ .Site.BaseURL }}"><img alt="Logo" src="{{ .Site.Params.logo.mobile | relURL }}" /></a>
+  </div>
+  {{ partial "main-menu.html" . }}
+  {{ partial "hamburger.html" . }}
 </div>

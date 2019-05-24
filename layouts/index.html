@@ -16,16 +16,19 @@
 {{ end }}
 
 {{ define "main" }}
-<div class="strip">
-  <div class="container pt-4 pb-16">
-    <div class="row">
-      <div class="col-12">
+<div class="strip masthead">
+  <div class="container py-6">
+    <div class="row align-items-center">
+      <div class="col-5 mx-auto col-md-5 order-md-2">
+        <img src="/images/conductor.svg" style="width: 50%;" />
+      </div>
+      <div class="col-md-7 order-md-1 text-center text-md-left pr-md-5">
         <h1 class="title">{{ .Title | default .Site.Title }}</h1>
         <div class="content">
           {{ if .Content }}
           {{ .Content }}
           {{ else }}
-          <p>{{ .Site.Params.homepage_intro }}</p>
+          <p style="width: 100%; white-space: pre-wrap;">{{ .Site.Params.homepage_intro }}</p>
           {{ end }}
         </div>
         <a class="button button-primary mb-2" href="{{ .Site.Params.homepage_button_link | relURL }}">
@@ -36,15 +39,31 @@
   </div>
 </div>
 
-<div class="strip">
-  <div class="container pt-4 pb-4">
+<section class="masthead">
+  <div class="row justify-content-center">
+    <div class="col-12 text-center mb-3">
+      {{with .Site.Params.topics.title}} <h2 class="section-title">{{ . }}</h2> {{ end }}
+    </div>
+    {{ range (where .Site.Pages "Type" "pages") }}
+    <div class="col-lg-4 col-sm-6 order-{{ .Params.order}} mb-4 topic-card">
+      <i class="fas {{ .Params.Icon }} mb-2"></i>
+      <h3 class="mb-3">{{ .Title }}</h3>
+      <p class="mb-0" style="width: 80%;">{{ .Params.Description }}</p>
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+<section class="masthead">
+  <div class="container">
     <div class="row justify-content-center">
-      <div class="col-12 col-md-10">
-          <img src="/images/conductor.svg" style="width: 30%; color: white;" />
+      <div class="col-12 text-center mb-3">
+        <p style="width: 80%;font-size: 0.9rem;">Projekt dofinansowany z Funduszy Europejskich w ramach Osi priorytetowej I. BADANIA, ROZWÓJ I KOMERCJALIZACJA WIEDZY Działanie I.2 INWESTYCJE PRZEDSĘBIORSTW W BADANIA I INNOWACJE Poddziałanie I.2.2 PROJEKTY B+R PRZEDSIĘBIORSTW</p>
+        <img src="/images/LOGOTYPY_PB_eng.png" style="max-width: 100%"/>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 {{ end }}
 

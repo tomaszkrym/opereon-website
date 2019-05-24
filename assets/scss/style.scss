@@ -74,9 +74,49 @@ body {
   line-height: 1.4;
   color: $body-color;
 }
-.container {
-  padding-left: $grid-gutter-width;
-  padding-right: $grid-gutter-width;
+.content {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+.masthead {
+  padding: 1rem 15px;
+
+  .container {
+    padding-left: $grid-gutter-width;
+    padding-right: $grid-gutter-width;
+  }
+  .button {
+    padding: .8rem 2rem;
+    font-weight: 600;
+    font-size: 1.25rem;
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: $primary;
+    border-color: $primary;
+    line-height: 1.5;
+    border-radius: .3rem;
+  }
+  .button:active, .button:hover {
+    color: $body-color;
+    background-color: $primary;
+    border-color: $primary;
+  }
+  .title {
+    font-size: 4rem;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    color: goldenrod;
+  }
+  i {
+    color: $primary;
+    font-size: 3rem;
+  }
+  .topic-card {
+    background-color: $dark-blue;
+    padding: 3rem 2rem;
+    border: 5px solid $body-bg;
+  }
 }
 
 // Display breakpoints for DEV
