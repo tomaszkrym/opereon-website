@@ -16,13 +16,8 @@ name = "Documentation"
 url = "/docs/"
 weight = 2
 
-[[menu.main]]
-name = "Blog"
-url = "/posts/"
-weight = 3
-
 [params]
-mainSections = ["posts", "docs"]
+mainSections = ["docs"]
 google_analytics_id = ""
 
 [params.logo]

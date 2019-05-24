@@ -1,9 +1,16 @@
 +++
-title = "First Post"
-date = 2018-03-03T13:23:10+01:00
-draft = false
-tags = ["Getting started"]
+title = "Overview"
+tags = []
 categories = []
 +++
 
-aaa
+## What is Opereon?
+
+Opereon is a configuration management and automation system, much like other systems, like [Ansible](https://www.ansible.com), [Puppet](https://puppet.com) or [Chef](https://www.chef.io).
+
+
+## Why Opereon?
+
+
+## How Opereon works?
+
