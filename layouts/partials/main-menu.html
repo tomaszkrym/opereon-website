@@ -9,4 +9,11 @@
     </li>
     {{end}}
   </ul>
+  {{ if .Site.Menus.icon }}
+  <ul>
+    {{ range sort .Site.Menus.icon }}
+    <li class="navbar-icon"><a href="{{ .URL }}"><i class="{{ .Name }}"></i></a></li>
+    {{ end }}
+  </ul>
+  {{ end }}
 </div>

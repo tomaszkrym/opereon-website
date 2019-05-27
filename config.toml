@@ -16,6 +16,11 @@ name = "Documentation"
 url = "/docs/"
 weight = 2
 
+[[menu.icon]]
+url = "https://github.com/opereon"
+name = "fab fa-github"
+weight = 1
+
 [params]
 mainSections = ["docs"]
 google_analytics_id = ""
