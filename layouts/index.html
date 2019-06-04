@@ -44,8 +44,8 @@
     <div class="col-12 text-center mb-3">
       {{with .Site.Params.topics.title}} <h2 class="section-title">{{ . }}</h2> {{ end }}
     </div>
-    {{ range (where .Site.Pages "Type" "pages") }}
-    <div class="col-lg-4 col-sm-6 order-{{ .Params.order}} mb-4 topic-card">
+    {{ range sort (where .Site.Pages "Type" "pages") "Params.order" "asc" }}
+    <div class="col-lg-4 col-sm-6 mb-4 topic-card">
       <i class="fas {{ .Params.Icon }} mb-2"></i>
       <h3 class="mb-3">{{ .Title }}</h3>
       <p class="mb-0" style="width: 80%;">{{ .Params.Description }}</p>
