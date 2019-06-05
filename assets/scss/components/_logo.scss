@@ -2,7 +2,8 @@
   display: none;
   @include media-breakpoint-up(sm) {
     display: block;
-    width: 70px;
+    width: 38px;
+    margin: 0px 10px;
   }
   img {
     width: 100%;
