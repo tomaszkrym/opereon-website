@@ -4,7 +4,7 @@ title = "Opereon"
 
 pygmentsCodeFences = true
 pygmentsCodefencesGuessSyntax = true
-pygmentsUseClasses = true
+pygmentsStyle = "swapoff"
 
 [[menu.main]]
 name = "Home"
