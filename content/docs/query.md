@@ -6,10 +6,13 @@ weight = 3
 +++
 
 ## Opath
+
 Simple language for object tree lookup and transformation, similar to XPath in function.
 
 ### Data types
+
 All data types transferable through `json`, `yaml` and `toml` formats are supported.
+
 * *null* - empty value
 * *number* - internally stored as either 64-bit integer or 64-bit float
 * *boolean* - `true` or `false`
@@ -20,6 +23,7 @@ All data types transferable through `json`, `yaml` and `toml` formats are suppor
 * *date* - **to be implemented!!**
 
 ### Literals
+
 * `123`, `-2` - 64-bit integer values
 * `1.13`, `.e10`, `-1E-2`, `.3` - 64-bit float values
 * `'id'`, `"id"` - string values
@@ -27,10 +31,13 @@ All data types transferable through `json`, `yaml` and `toml` formats are suppor
 * `null` - null value
 
 ### Type conversions
+
 Same as ECMAScript, integers promoted to floats when mixed operands (do rozwiniecia)
 
 ### Mathematical operators
+
 Typical mathematical operators and parentheses are supported.
+
 * `2 + 3`, `@.count + 1` - numerical addition
 * `2 - 3`, `@.count - 1` - numerical subtraction
 * `2 * 3`, `@.count * 2` - numerical multiplication
@@ -41,11 +48,13 @@ Typical mathematical operators and parentheses are supported.
 Internally, type conversion is avoided as long as possible, i.e. adding two integer values will yield integer sum.
 
 ### String concatenation
+
 If any of the addition operands has a string value, addition will become string concatenation
 * `2 + "3"`, `"2" + 3` - both expressions yield string value `"23"`
 * `"John" + " " + 'Doe'` - yields `"John Doe"`
 
 ### Comparison operators
+
 * `2 > 3`
 * `2 >= 3`
 * `2 < 3`
