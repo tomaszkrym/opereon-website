@@ -1,13 +1,12 @@
 +++
-title = "Data query language"
+title = "Opath query language"
 tags = []
 categories = []
 weight = 3
 +++
 
-## Opath
-
-Simple language for object tree lookup and transformation, similar to XPath in function.
+Opath is a simple language for object tree lookup and transformation, similar to 
+[XPath](https://www.w3.org/TR/xpath/) in function.
 
 ### Data types
 

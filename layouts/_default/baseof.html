@@ -55,15 +55,17 @@
 
   {{ partial "sub-footer.html" . }}
 
-  {{ $scripts := resources.Get "js/scripts.js" }}
+  {{ $libs :=  resources.Get "js/libs/clipboard.js" }}
+  {{ $scripts :=  resources.Get "js/scripts.js" }}
+  {{ $js :=  slice $libs $scripts | resources.Concat "js/bundle.js" }}
 
   {{ block "footer_js" . }}
   {{ end }}
 
   {{ if .Site.IsServer }}
-  <script type="text/javascript" src="{{ $scripts.RelPermalink }}"></script>
+  <script type="text/javascript" src="{{ $js.RelPermalink }}"></script>
   {{ else }}
-  <script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
+  <script type="text/javascript" src="{{ ($js | minify | fingerprint).RelPermalink }}"></script>
   {{ end }}
 
   {{ partial "google-analytics.html" . }}

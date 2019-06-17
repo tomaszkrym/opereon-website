@@ -1,0 +1,8 @@
+{{ $file := .Get "file" }}
+<figure class="code" id="{{ $file | urlize}}">
+    <figcaption class="filename">{{ $file }}</figcaption>
+    <div class="buttons">
+        <button class="fa fa-copy clipboard"></button>
+    </div>
+    {{ .Inner }}
+</figure>

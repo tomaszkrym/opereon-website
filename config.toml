@@ -6,6 +6,9 @@ pygmentsCodeFences = true
 pygmentsCodefencesGuessSyntax = true
 pygmentsStyle = "swapoff"
 
+[blackfriday]
+plainIDAnchors = true
+
 [[menu.main]]
 name = "Home"
 url = "/"
