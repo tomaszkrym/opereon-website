@@ -9,31 +9,81 @@ This chapter contains describes data model for managed infrastructure
 +++
 
 
-In our approach to ICT automation, the main focus is on representing every piece of significant information about the 
-managed infrastructure in the form of **versioned** **file tree**. 
+In our approach to ICT automation, everything is built around a concept of representing every piece of significant 
+information about the managed infrastructure in the form of a **versioned** **file tree**. All of the necessary facts about 
+managed hosts, users, services, etc. are represented by set of (mostly) textual files, that are easy to edit and 
+maintain.
 
-All of necessary facts about managed hosts, users, services, etc., as well as definitions of all administrative tasks, 
-are represented by files in a single [git](https://git-scm.com) repository for change tracking. When used, the 
-data from files is then transformed into an generalized object tree, which can be traversed and searched with the use 
-of our own specialized data query language [Opath](/docs/opath).
-
-For illustration purposes lets analyse files:
+For illustration purposes, consider the following directory, containing some crucial pieces of information about a very 
+simple infrastructure, with one host named `server1` and one user account named `john`.  
 
 {{<code opts="linenos=">}}
 ```ascii-tree
 . 
-    hosts/
-        host1/
-            ssh/
-                id.pub
-                rssadsa
-        users/
-            johnny/
-                ssh/
-                    rsadsa
-                    id.pub 
+  hosts/
+    server1/
+      etc/
+        ssh/
+          ssh_host_rsa_key
+          ssh_host_rsa_key.pub
+      _.yaml    
+  users/
+    john/
+      ssh/
+        id_rsa.pub
+      _.json  
 ```
 {{</code>}}
+
+Of particular interest in this discussion are the files presented below:
+
+{{<code file="hosts/server1/_.yaml">}}
+```yaml
+hostname: server1
+domain: example.org
+net:
+  eth0:
+    ip4:
+      address: 192.168.1.100
+      mask: 255.255.255.0
+      gateway: 192.168.1.1
+packages: [mc, vim, ]      
+```
+{{</code>}}
+
+{{<code file="users/john/_.json">}}
+```json
+{
+  "username": "john",
+  "email": "johnny@example.org",
+  "first_name": "John",
+  "last_name": "Smith"
+}
+```
+{{</code>}}
+
+which contain some arbitrary metadata about the host `server1` and the user `john` respectively.
+ 
+The files in `hosts/server1/etc/ssh/` folder contain private and public keys for SSH service on the host. It would be 
+desired in this example, that the actual SSH service keys, which are presumably kept in `/etc/ssh` folder on the `server1`, 
+should always be identical to those in the file structure. That way, in case of catastrophic hardware failure, the host can be
+recreated on another hardware, with identical SSH fingerprint. 
+
+As it can be seen from the example, such file set can intuitively and efficiently store in a *declarative manner* a desired 
+configuration of the managed infrastructure. By changing some metadata inside the file set (for instance changing IP 
+address for the hosts) and running Opereon toolchain on the file set, that change should be performed on the actual host 
+by executing a defined set of administrative tasks (like reconfiguring network interfaces).
+
+---
+ 
+ in a single [git](https://git-scm.com) repository for change tracking. When used, the 
+data from files is then transformed into an generalized object tree, which can be traversed and searched with the use 
+of our own specialized data query language [Opath](/docs/opath).
+
+, as well as definitions of all administrative tasks,
+
+For illustration purposes lets analyse files:
+
 
 
 ## Data representation
