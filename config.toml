@@ -2,9 +2,11 @@ baseURL = "https://opereon.io"
 languageCode = "en-us"
 title = "Opereon"
 
-pygmentsCodeFences = true
+pygmentsUseClassic = false
+pygmentsCodefences = true
 pygmentsCodefencesGuessSyntax = true
 pygmentsStyle = "swapoff"
+pygmentsOptions = "linenos=table"
 
 [blackfriday]
 plainIDAnchors = true

@@ -17,6 +17,24 @@ are represented by files in a single [git](https://git-scm.com) repository for c
 data from files is then transformed into an generalized object tree, which can be traversed and searched with the use 
 of our own specialized data query language [Opath](/docs/opath).
 
+For illustration purposes lets analyse files:
+
+{{<code opts="linenos=">}}
+```ascii-tree
+. 
+    hosts/
+        host1/
+            ssh/
+                id.pub
+                rssadsa
+        users/
+            johnny/
+                ssh/
+                    rsadsa
+                    id.pub 
+```
+{{</code>}}
+
 
 ## Data representation
 
@@ -33,8 +51,8 @@ transformation are configurable, as described below.
 At the root of file tree representing data model for Opereon, there must be preset a manifest file. Manifest file is by 
 default named `op.toml`
 
-{{<code file="./op.toml">}}
-{{<highlight toml "linenos=table">}}
+{{<code file="op.toml">}}
+```toml
 [info]
 authors = ["John <johnny@example.org>", "Mark <mark@example.org>"]
 description = "Server farm 1"
@@ -44,7 +62,7 @@ users = "$.conf.users.*"
 hosts = "$.conf.hosts.*"
 procs = "$.(proc, probe).**[@.proc != null]"
 user_defined_expr_1 = "$.**[custom_property == 'custom_value']"
-{{</highlight>}}
+```
 {{</code>}}
 
 

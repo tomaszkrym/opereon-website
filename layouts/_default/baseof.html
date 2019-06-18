@@ -55,7 +55,7 @@
 
   {{ partial "sub-footer.html" . }}
 
-  {{ $libs :=  resources.Get "js/libs/clipboard.js" }}
+  {{ $libs :=  slice (resources.Get "js/libs/clipboard.js") (resources.Get "js/libs/ascii-tree.js") | resources.Concat "js/libs.js" }}
   {{ $scripts :=  resources.Get "js/scripts.js" }}
   {{ $js :=  slice $libs $scripts | resources.Concat "js/bundle.js" }}
 

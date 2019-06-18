@@ -136,9 +136,9 @@ h1.title {
   }
 
   .buttons {
-    float: right;
+    position: absolute;
+    right: 10px;
     margin: 5px;
-    //visibility: hidden;
 
     button {
       background: transparent;

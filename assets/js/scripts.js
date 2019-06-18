@@ -19,7 +19,7 @@ figures.forEach((f) => {
 });
 */
 
-var figures = document.querySelectorAll('figure.code');
+let figures = document.querySelectorAll('figure.code');
 figures.forEach((f) => {
     let copyBtn = f.querySelector('.clipboard');
     let content = f.querySelector('.highlight tr td:nth-child(2) pre code');
@@ -29,6 +29,13 @@ figures.forEach((f) => {
         target: () => {
             return content;
         }
-    })
+    });
+
+    let tree = f.querySelector('pre code[data-lang="ascii-tree"]');
+    if (tree) {
+        let input = tree.innerText;
+        let output = ascii_tree_generate(input);
+        tree.innerHTML = output;
+    }
 });
 

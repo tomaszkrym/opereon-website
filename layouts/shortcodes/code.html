@@ -1,8 +1,13 @@
 {{ $file := .Get "file" }}
+{{ $opts := .Get "opts" | string }}
+{{ $lang := trim (index (findRE "```(\\S*)" .Inner 1) 0) "`" }}
+{{ $code := trim (replaceRE "```\\S*" "" .Inner) "\n " }}
 <figure class="code" id="{{ $file | urlize}}">
+    {{ if $file }}
     <figcaption class="filename">{{ $file }}</figcaption>
+    {{ end }}
     <div class="buttons">
         <button class="fa fa-copy clipboard"></button>
     </div>
-    {{ .Inner }}
+    {{ highlight $code $lang $opts }}
 </figure>
