@@ -1,14 +1,19 @@
-+++
-title = "Opath query language"
-tags = []
-categories = []
-weight = 3
-+++
+---
+title: "Opath query language"
+weight: 3
+tags: []
+categories: []
+menu:
+  docs:
+    parent: 
+  main:
+    parent: Documentation  
+---
 
 Opath is a simple language for object tree lookup and transformation, similar to 
 [XPath](https://www.w3.org/TR/xpath/) in function.
 
-### Data types
+# Data types
 
 All data types transferable through `json`, `yaml` and `toml` formats are supported.
 
@@ -20,7 +25,7 @@ All data types transferable through `json`, `yaml` and `toml` formats are suppor
 * *object* - object or map, can contain string-keyed properties
 * *array* - array or sequence of elements
 
-### Literals
+# Literals
 
 * `123`, `-2` - 64-bit integer values
 * `1.13`, `.e10`, `-1E-2`, `.3` - 64-bit float values
@@ -28,11 +33,11 @@ All data types transferable through `json`, `yaml` and `toml` formats are suppor
 * `true`, `false` - boolean values
 * `null` - null value
 
-### Type conversions
+# Type conversions
 
 Same as ECMAScript, integers promoted to floats when mixed operands (do rozwiniecia)
 
-### Mathematical operators
+# Mathematical operators
 
 Typical mathematical operators and parentheses are supported.
 
@@ -45,13 +50,13 @@ Typical mathematical operators and parentheses are supported.
 
 Internally, type conversion is avoided as long as possible, i.e. adding two integer values will yield integer sum.
 
-### String concatenation
+# String concatenation
 
 If any of the addition operands has a string value, addition will become string concatenation
 * `2 + "3"`, `"2" + 3` - both expressions yield string value `"23"`
 * `"John" + " " + 'Doe'` - yields `"John Doe"`
 
-### Comparison operators
+# Comparison operators
 
 * `2 > 3`
 * `2 >= 3`
@@ -63,13 +68,13 @@ If any of the addition operands has a string value, addition will become string 
 * `'aaabbb' *= 'aa'` - `true` if left string operand contains right string operand
 * `'aaabbb' $= 'bb'` - `true` if left string operand ends with right string operand
 
-### Logical operators
+# Logical operators
 
 * `not true`, `!true`
 * `true and true`, `true && true`
 * `true or true`, `true || true`
 
-### Number ranges
+# Number ranges
 
 * `:10` - range from `0` (inclusive) to `10` (inclusive)
 * `1:10` - range from `1` (inclusive) to `10` (inclusive)
@@ -78,7 +83,7 @@ If any of the addition operands has a string value, addition will become string 
 * `1..10` - range from `1` (inclusive) to `10` (inclusive)
 * `..10` - range from `0` (inclusive) to `10` (inclusive)
 
-### Context
+# Context
 
 Every `Opath` expression is executed in the context of **root** (denoted `$`) and **current** 
 (denoted `@`) elements. To access any element in the object tree, it's relation to 
@@ -90,7 +95,7 @@ For expressions based at the **current** element, explicit denotion of `@` can u
 * `name` - same as above
 * `$.name` - returns the value of property "name" from the **root** element
 
-### Indexing for arrays
+# Indexing for arrays
 
 Array elements can be accessed with `[]` notation. Arrays are indexed starting from `0`.
 
@@ -103,7 +108,7 @@ Array elements can be accessed with `[]` notation. Arrays are indexed starting f
 Accessing array with out-of-bounds index values yields empty result. Accessing array element on a non-array 
 and non-object type yields empty result.
 
-### Property access for objects
+# Property access for objects
 
 Properties in objects can be accessed with typical `.` or `[]` notations.
 
@@ -117,7 +122,7 @@ Properties in objects can be accessed with typical `.` or `[]` notations.
 Accessing an nonexistent property yields empty result. Accessing a property on a non-object type also yields 
 empty result.
 
-### Property indexing for objects
+# Property indexing for objects
 
 Every object can also be indexed as an array, where index value will correspond with property position within 
 the object. For example if **current** object will be:
@@ -130,7 +135,7 @@ the object. For example if **current** object will be:
 expression `@[1]` will yield string value `"Doe"` (value of the secod property). Objects have strictly defined 
 and stable insertion order of properties.
 
-### Property / element filtering
+# Property / element filtering
 
 Properties in objects or elements in arrays can also be filtered with logical expressions inside `[]` notation.
 
@@ -139,12 +144,12 @@ Properties in objects or elements in arrays can also be filtered with logical ex
 
 Note that inside the `[]` expression the **current** element (`@`) becomes the child of the outer element.
 
-### Property / element access wildcard operator `*`
+# Property / element access wildcard operator `*`
 
 * `@.*`, `@[*]` - yields all properties of the **current** object or all elements of the **current** array, or 
   empty result, depending on the **current** type
 
-### Property / element access recursive descent operator `**`
+# Property / element access recursive descent operator `**`
 
 * `@.**`, `@[**]` - yields all properties of the **current** object, and recursively all of their properties in 
   depth-first descending order.
@@ -155,20 +160,20 @@ Note that inside the `[]` expression the **current** element (`@`) becomes the c
   - if maximal depth level is omitted, descend operator will be unbound from the top, i.e. will continue for all descendants.
   - if minimal depth level value is `0`, the result will also include accessed element itself.
 
-### Parent access operator `^`
+# Parent access operator `^`
 
 * `@^` - this yields parent element of the **current** element. 
 * `@.name^` - if **current** element is an object and contains "name" property, this expression will yield 
   **current** element.
 
-### Ascendant access recursive operator `^**`
+# Ascendant access recursive operator `^**`
 
 * `@^**` - yields all ascendants of the **current** element, in order of decreasing depth. The last element will 
   be **root**.
 * `@^**{1,4}`, `@^**{,4}`, `@^**{2}`- optionally recursive distance range can be specified, analogically like 
   for `**`. The distance is specified relative from the element being accessed.
 
-### Metadata (attributes)
+# Metadata (attributes)
 
 All elements contain readable metadata (attributes). Those attributes are accessed like regular properties, but with 
 name prefixed with `@` character.

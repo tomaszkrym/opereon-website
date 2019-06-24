@@ -1,18 +1,30 @@
-+++
-title = "Data model"
-tags = []
-categories = []
-weight = 2
-summary = """
-This chapter contains describes data model for managed infrastructure 
-"""
-+++
-
+---
+title: Data model
+weight: 2
+tags: 
+categories: 
+summary: |
+  This chapter contains describes data model for managed infrastructure 
+menu:
+  docs:
+    parent: 
+  main:
+    parent: Documentation
+---
 
 In our approach to ICT automation, everything is built around a concept of representing every piece of significant 
 information about the managed infrastructure in the form of a **versioned** **file tree**. All of the necessary facts about 
 managed hosts, users, services, etc. are represented by set of (mostly) textual files, that are easy to edit and 
 maintain.
+
+ in a single [git](https://git-scm.com) repository for change tracking. When used, the 
+data from files is then transformed into an generalized object tree, which can be traversed and searched with the use 
+of our own specialized data query language [Opath](/docs/opath).
+
+, as well as definitions of all administrative tasks,
+
+
+# Introduction
 
 For illustration purposes, consider the following directory, containing some crucial pieces of information about a very 
 simple infrastructure, with one host named `server1` and one user account named `john`.  
@@ -47,7 +59,7 @@ net:
       address: 192.168.1.100
       mask: 255.255.255.0
       gateway: 192.168.1.1
-packages: [mc, vim, ]      
+packages: [mc, vim, nmap]      
 ```
 {{</code>}}
 
@@ -74,19 +86,8 @@ configuration of the managed infrastructure. By changing some metadata inside th
 address for the hosts) and running Opereon toolchain on the file set, that change should be performed on the actual host 
 by executing a defined set of administrative tasks (like reconfiguring network interfaces).
 
----
- 
- in a single [git](https://git-scm.com) repository for change tracking. When used, the 
-data from files is then transformed into an generalized object tree, which can be traversed and searched with the use 
-of our own specialized data query language [Opath](/docs/opath).
 
-, as well as definitions of all administrative tasks,
-
-For illustration purposes lets analyse files:
-
-
-
-## Data representation
+# Data representation
 
 Files in the model can contain arbitrary JSON-like data (currently supported parsable formats include [JSON](https://www.json.org), 
 [YAML](https://yaml.org) and [TOML](https://github.com/toml-lang/toml)). 
@@ -96,7 +97,7 @@ All of the files are transformed into an object tree in memory when in use by Op
 transformation are configurable, as described below. 
 
 
-### Manifest file
+## Manifest file
 
 At the root of file tree representing data model for Opereon, there must be preset a manifest file. Manifest file is by 
 default named `op.toml`
@@ -116,6 +117,41 @@ user_defined_expr_1 = "$.**[custom_property == 'custom_value']"
 {{</code>}}
 
 
-### Settings file
+## Settings file
 
+{{<code file=".operc">}}
+```toml
+inherit_excludes = true
+inherit_includes = true
+inherit_overrides = true
 
+[[exclude]]
+path = "**/.*/**"
+
+[[include]]
+path = "**/*"
+file_type = "dir"
+item = "${map()}"
+mapping = "${$.find(array($item.@file_path_components[..-2]).join('.')).set($item.@file_name, $item)}"
+
+[[include]]
+path = "**/_.{yaml,yml,toml,json}"
+file_type = "file"
+item = "${loadFile(@.@file_path, @.@file_ext)}"
+mapping = "${$.find(array($item.@file_path_components[..-2]).join('.')).extend($item)}"
+
+[[include]]
+path = "**/*.{yaml,yml,toml,json}"
+file_type = "file"
+item = "${loadFile(@.@file_path, @.@file_ext)}"
+mapping = "${$.find(array($item.@file_path_components[..-2]).join('.')).set($item.@file_stem, $item)}"
+
+[[include]]
+path = "**/*"
+file_type = "file"
+item = "${loadFile(@.@file_path, 'text')}"
+mapping = "${$.find(array($item.@file_path_components[..-2]).join('.')).set($item.@file_stem, $item)}"
+
+[overrides]
+```
+{{</code>}}

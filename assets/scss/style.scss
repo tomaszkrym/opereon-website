@@ -54,7 +54,7 @@
 @import 'components/logo';
 @import 'components/main-menu';
 @import 'components/main-menu-mobile';
-@import 'components/docs-menu';
+@import 'components/sidebar';
 @import 'components/hamburger';
 @import 'components/buttons';
 @import 'components/title';
@@ -113,16 +113,6 @@ body {
     background-color: $dark-blue;
     padding: 3rem 2rem;
     border: 5px solid $body-bg;
-  }
-}
-
-h1.title {
-  color: $secondary;
-}
-
-.content {
-  h1, h2, h3, h4, h5, h6 {
-    color: $primary;
   }
 }
 

@@ -21,12 +21,16 @@ figures.forEach((f) => {
 
 let figures = document.querySelectorAll('figure.code');
 figures.forEach((f) => {
-    let copyBtn = f.querySelector('.clipboard');
-    let content = f.querySelector('.highlight tr td:nth-child(2) pre code');
-    copyBtn.attributes['aria-label'] = "Copy to clipboard";
-    copyBtn.attributes['title'] = "Copy to clipboard";
-    new ClipboardJS(copyBtn, {
+    let btn = f.querySelector('button.clipboard');
+    let content = f.querySelector('.highlight > pre > code');
+    if (!content) {
+        content = f.querySelector('.highlight tr > td:nth-child(2) > pre > code');
+    }
+    btn.attributes['aria-label'] = "Copy to clipboard";
+    btn.attributes['title'] = "Copy to clipboard";
+    new ClipboardJS(btn, {
         target: () => {
+            window.alert("dupa");
             return content;
         }
     });
