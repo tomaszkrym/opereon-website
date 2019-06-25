@@ -1,7 +1,8 @@
 {{ $file := .Get "file" }}
 {{ $opts := .Get "opts" | string }}
 {{ $lang := trim (index (findRE "```(\\S*)" .Inner 1) 0) "`" }}
-{{ $code := trim (replaceRE "```\\S*" "" .Inner) "\n " }}
+{{ $code := split (index (findRE "```(.|\n)*?```" .Inner 1) 0) "\n" }}
+{{ $code := delimit (first (sub (len $code) 2) (after 1 $code)) "\n" "\n" }}
 <figure class="code" id="{{ $file | urlize}}">
   {{ if $file }}
   <figcaption class="filename"><code>{{ $file }}</code></figcaption>

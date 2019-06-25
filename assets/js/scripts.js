@@ -30,7 +30,6 @@ figures.forEach((f) => {
     btn.attributes['title'] = "Copy to clipboard";
     new ClipboardJS(btn, {
         target: () => {
-            window.alert("dupa");
             return content;
         }
     });

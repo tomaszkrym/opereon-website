@@ -59,7 +59,7 @@ net:
       address: 192.168.1.100
       mask: 255.255.255.0
       gateway: 192.168.1.1
-packages: [mc, vim, nmap]      
+packages: [mc, vim, nmap]
 ```
 {{</code>}}
 
@@ -153,5 +153,7 @@ item = "${loadFile(@.@file_path, 'text')}"
 mapping = "${$.find(array($item.@file_path_components[..-2]).join('.')).set($item.@file_stem, $item)}"
 
 [overrides]
+# no overrides
+
 ```
 {{</code>}}
