@@ -3,6 +3,8 @@ title: "Opath query language"
 weight: 3
 tags: []
 categories: []
+summary: |
+  Definition of object tree query language Opath. 
 menu:
   docs:
     parent: 

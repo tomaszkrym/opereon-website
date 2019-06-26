@@ -12,16 +12,14 @@ menu:
     parent: Documentation
 ---
 
-In our approach to ICT automation, everything is built around a concept of representing every piece of significant 
+In our approach to ICT automation, everything is built around a concept of **data model** representing every piece of significant 
 information about the managed infrastructure in the form of a **versioned** **file tree**. All of the necessary facts about 
 managed hosts, users, services, etc. are represented by set of (mostly) textual files, that are easy to edit and 
 maintain.
 
- in a single [git](https://git-scm.com) repository for change tracking. When used, the 
+The model is kept in a single [git](https://git-scm.com) repository for change tracking. When used, the 
 data from files is then transformed into an generalized object tree, which can be traversed and searched with the use 
 of our own specialized data query language [Opath](/docs/opath).
-
-, as well as definitions of all administrative tasks,
 
 
 # Introduction
@@ -119,6 +117,13 @@ user_defined_expr_1 = "$.**[custom_property == 'custom_value']"
 
 ## Settings file
 
+Everywhere in the data model, a user can also define a file named `.operc`, containing settings used when reading the model
+into the object tree. The settings are overwritten by a setting file in hierarchical fashion, for the folder in which the 
+`.operc` file is located, and its subfolders, unless further overwritten with nested `.operc` files.
+
+By default, if no `.operc` file is present anywhere in the model, the default settings are used, as presented below. 
+
+ 
 {{<code file=".operc">}}
 ```toml
 inherit_excludes = true
