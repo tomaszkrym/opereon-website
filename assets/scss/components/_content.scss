@@ -34,8 +34,9 @@
     font-weight: bold;
   }
   em {
-    font-style: italic;
+    font-style: normal;
     font-weight: normal;
+    color: $secondary;
   }
   ol {
     margin-top: 10px;
