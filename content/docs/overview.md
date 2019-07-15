@@ -19,10 +19,9 @@ paradigm. Automated approach for system administration, if used efficiently, can
 organization, like operational cost and/or risk reductions. On the other hand, the introduction of any solution 
 for IT automation will incur added cost of it's implementation within the organization. 
 
-We thrive to provide and maintain our own *open-source* solution for IT automation, which we have designed and implemented
-because we could not find an existing solution for our IT automation needs that would check all of our boxes. 
-In the following part we will present our product and discuss its features in comparison to the existing popular solutions 
-for IT automation.  
+We thrive to provide and maintain our own *open-source* solution for *IT automation*, which we have designed and 
+implemented because we could not find an existing solution for our needs that would check all of the boxes. In the 
+following part we will present our product and discuss its features in comparison to the existing popular solutions.  
 
 
 # What is Opereon?
