@@ -46,7 +46,9 @@ triggers to be executed automatically when declarative part of the infrastructur
 Typically configuration management tools were designed around two fundamental approaches of representing what needs to be
 configured on remote hosts for the infrastructure to operate as required. 
  
-- *declarative* (functional), where the user typically defines *what* is the desired state of infrastructure
+- *Declarative* (or functional), where the user typically defines *what* is the desired state of the infrastructure. 
+  This approach is encouraged for instance by [Puppet](https://puppet.com) and [SaltStack](https://www.saltstack.com). 
+      
 - *imperative* (procedural), where the user defined *how* the desired state is to be achieved  
 
 

@@ -24,12 +24,8 @@
       </div>
       <div class="col-md-7 order-md-1 text-center text-md-left pr-md-5">
         <h1 class="title">{{ .Title | default .Site.Title }}</h1>
-        <div class="content">
-          {{ if .Content }}
+        <div class="content" style="margin-bottom: 1.5em;">
           {{ .Content }}
-          {{ else }}
-          <p style="width: 100%; white-space: pre-wrap;">{{ .Site.Params.homepage_intro }}</p>
-          {{ end }}
         </div>
         <a class="button button-primary mb-2" href="{{ .Site.Params.homepage_button_link | relURL }}">
           {{ .Site.Params.homepage_button_text }}
@@ -58,7 +54,6 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 text-center mb-3">
-        <p style="width: 80%;font-size: 0.9rem;">Projekt dofinansowany z Funduszy Europejskich w ramach Osi priorytetowej I. BADANIA, ROZWÓJ I KOMERCJALIZACJA WIEDZY Działanie I.2 INWESTYCJE PRZEDSĘBIORSTW W BADANIA I INNOWACJE Poddziałanie I.2.2 PROJEKTY B+R PRZEDSIĘBIORSTW</p>
         <img src="/images/LOGOTYPY_PB_eng.png" style="max-width: 100%"/>
       </div>
     </div>

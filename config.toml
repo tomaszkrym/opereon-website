@@ -31,10 +31,6 @@ mainSections = ["docs"]
 google_analytics_id = ""
 homepage_button_link = "/docs"
 homepage_button_text = "Get started"
-homepage_intro = """
-Opereon is an easy tool for maintaining multiple server hosts in one platform.
-Packed to the gills with amazing features and tools, coupled with heaps of detailed documentation, OPEREON will make you look like a hero server hosts manager!
-"""
 
 [params.logo]
 mobile = "/images/logo.svg"
