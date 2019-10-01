@@ -19,10 +19,10 @@
 <div class="strip masthead">
   <div class="container py-6">
     <div class="row align-items-center">
-      <div class="col-5 mx-auto col-md-5 order-md-2">
-        <img src="/images/conductor.svg" style="width: 50%;" />
+      <div class="mx-auto col-md-4 order-md-2">
+        <img src="/images/conductor.svg" style="width: 80%;" />
       </div>
-      <div class="col-md-7 order-md-1 text-center text-md-left pr-md-5">
+      <div class="col-md-8 order-md-1 text-center text-md-left pr-md-5">
         <h1 class="title">{{ .Title | default .Site.Title }}</h1>
         <div class="content" style="margin-bottom: 1.5em;">
           {{ .Content }}
@@ -44,7 +44,7 @@
     <div class="col-lg-4 col-sm-6 mb-4 topic-card">
       <i class="fas {{ .Params.Icon }} mb-2"></i>
       <h3 class="mb-3">{{ .Title }}</h3>
-      <p class="mb-0" style="width: 80%;">{{ .Params.Description }}</p>
+      <p class="mb-0" style="width: 80%; margin-left: auto; margin-right: auto;">{{ .Params.Description }}</p>
     </div>
     {{ end }}
   </div>
