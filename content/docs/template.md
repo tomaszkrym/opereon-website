@@ -1,6 +1,6 @@
 ---
 title: Templates
-weight: 4
+weight: 6
 tags:
 categories:
 menu:

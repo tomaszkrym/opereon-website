@@ -1,6 +1,6 @@
 ---
 title: Data model
-weight: 2
+weight: 4
 tags: 
 categories: 
 summary: |
