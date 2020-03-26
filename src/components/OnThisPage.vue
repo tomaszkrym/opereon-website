@@ -62,10 +62,10 @@ export default {
       }
 
       // Clear the current observer.
-/*      this.observer.disconnect();*/
+      this.observer.disconnect();
 
       // And create another one for the next page.
-/*      this.$nextTick(this.initObserver);*/
+      this.$nextTick(this.initObserver);
     }
   },
 
@@ -91,7 +91,7 @@ export default {
       }
     },
 
-/*    initObserver() {
+    initObserver() {
       this.observer = new IntersectionObserver(this.observerCallback, {
         // This rootMargin should allow intersections at the top of the page.
         rootMargin: '0px 0px 99999px',
@@ -105,7 +105,7 @@ export default {
       for (let i = 0; i < elements.length; i++) {
         this.observer.observe(elements[i]);
       }
-    },*/
+    },
   },
 
   mounted() {
@@ -113,7 +113,7 @@ export default {
       if (window.location.hash) {
         this.activeAnchor = window.location.hash;
       }
-/*      this.$nextTick(this.initObserver);*/
+      this.$nextTick(this.initObserver);
     }
   }
 };
