@@ -1,7 +1,7 @@
 module.exports = {
   siteName: 'Opereon',
   siteDescription: 'Infrastructure management system',
-  siteUrl: 'https://opereon.io',
+  siteUrl: (process.env.SITE_URL ? process.env.SITE_URL : 'https://opereon.io'),
   icon: {
     favicon: {
       src: 'src/assets/opereon-logo.svg',
@@ -14,6 +14,7 @@ module.exports = {
     }
   },
   settings: {
+    web: 'https://kodegenix.pl/',
     github: 'https://github.com/opereon/opereon',
     nav: {
       links: [

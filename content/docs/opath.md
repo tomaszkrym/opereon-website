@@ -1,7 +1,7 @@
 ---
 description: 'Definition of object tree query language Opath'
 sidebar: 'docs'
-prev: '/docs/model'
+prev: '/docs/model/'
 next: '/docs/template/'
 ---
 

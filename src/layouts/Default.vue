@@ -24,7 +24,7 @@
         </aside>
 
         <div
-          class="w-full pb-24"
+          class="w-full pb-16"
           :class="{'pl-0 lg:pl-12 lg:w-3/4': hasSidebar}"
         >
           <slot />
@@ -40,6 +40,27 @@
         <MenuIcon v-else />
       </button>
     </div>
+    <footer class="border-t bg-ui-background border-ui-border">
+<!--      <client-only>
+        <cookies @accept="enableAnalytics()"/>
+      </client-only>-->
+      <section class="footer-copyright">
+        <div class="footer-copyright container mx-auto flex flex-col lg:flex-row items-center justify-between py-4">
+          <div class="flex">
+            <span>&copy 2020 Kodegenix</span><span class="footer-ver px-4" :title="versionInfoExt">({{versionInfo}})</span>
+          </div>
+          <g-image src="../assets/kodegenix_logo.svg" alt="eu" title="eu" immediate="true" height="200" width="250"></g-image>
+<!--          <div class="flex px-2 sm:px-0">
+            <div class="mr-4 text-xs sm:text-base">site powered by:</div>
+            <ul class="flex flex-1 items-center">
+              <li v-for="p in footerProjects" class="mr-4">
+                <a :href="p.url" target="_blank"><g-image :src="theme === 'theme-dark' ? p.logo_dark ? p.logo_dark : p.logo : p.logo" :title="p.name" /></a>
+              </li>
+            </ul>
+          </div>-->
+        </div>
+      </section>
+    </footer>
   </div>
 </template>
 
@@ -94,32 +115,6 @@ export default {
   },
   mounted() {
     this.setHeaderHeight();
-  },
-  metaInfo() {
-    return {
-      meta: [
-        {
-          key: 'og:type',
-          name: 'og:type',
-          content: 'website',
-        },
-        {
-          key: 'twitter:card',
-          name: 'twitter:card',
-          content: 'summary_large_image',
-        },
-        {
-          key: 'og:image',
-          name: 'og:image',
-          content: process.env.SITE_URL + '/logo.jpg',
-        },
-        {
-          key: 'twitter:image',
-          name: 'twitter:image',
-          content: process.env.SITE_URL + '/logo.jpg',
-        },
-      ]
-    }
   }
 };
 </script>
@@ -151,7 +146,9 @@ html[lights-out] {
   transition-duration: 200ms;
   transition-timing-function: ease-in-out;
 }
-
+button:focus {
+  outline: none;
+}
 h1,
 h2,
 h3,
@@ -209,7 +206,7 @@ blockquote {
   h1, h2, h3, h4, h5, h6 {
     @apply -mt-12 pt-20;
   }
-    
+
   h2 + h3,
   h2 + h2,
   h3 + h3 {

@@ -9,7 +9,7 @@
             class="flex items-center text-ui-primary"
             title="Home"
           >
-            <Logo :width="40" class="text-ui-primary" />
+            <g-image src="../assets/opereon-logo.svg" alt="Opereon" title="Opereon" immediate="true" width="260" height="40" fit="inside"/>
             <span class="hidden ml-2 text-xl font-black tracking-tighter uppercase sm:block">
               {{ meta.siteName }}
             </span>
@@ -27,7 +27,7 @@
           </div>
         </div>
 
-        <div class="w-full px-2 sm:px-4 max-w-screen-xs">
+        <div class="px-2 sm:px-4 max-w-screen-xs flex-1">
           <ClientOnly>
             <Search />
           </ClientOnly>
@@ -35,12 +35,8 @@
 
         <div class="flex items-center justify-end px-2 sm:px-4">
 
-          <a v-if="settings.web" :href="settings.web" class="hidden ml-3 sm:block" target="_blank" rel="noopener noreferrer" title="Website" name="Website">
+          <a v-if="settings.web" :href="settings.web" class="hidden ml-3 sm:block" target="_blank" rel="noopener noreferrer" title="Kodegenix" name="Kodegenix">
             <GlobeIcon size="1.5x" />
-          </a>
-
-          <a v-if="settings.twitter" :href="settings.twitter" class="hidden ml-3 sm:block" target="_blank" rel="noopener noreferrer" title="Twitter" name="Twitter">
-            <TwitterIcon size="1.5x" />
           </a>
 
           <a v-if="settings.github" :href="settings.github" class="sm:ml-3" target="_blank" rel="noopener noreferrer" title="Github" name="Github">
@@ -65,6 +61,7 @@ query {
   metadata {
     siteName
     settings {
+      web
       github
       nav {
         links {
@@ -79,21 +76,18 @@ query {
 
 <script>
 import ToggleDarkMode from "@/components/ToggleDarkMode";
-import Logo from '@/components/Logo';
-import { SunIcon, MoonIcon, GlobeIcon, GithubIcon, TwitterIcon } from "vue-feather-icons";
+import { SunIcon, MoonIcon, GithubIcon, GlobeIcon } from "vue-feather-icons";
 
 const Search = () => import(/* webpackChunkName: "search" */ "@/components/Search").catch(error => console.warn(error));
 
 export default {
   components: {
-    Logo,
     Search,
     ToggleDarkMode,
     SunIcon,
     MoonIcon,
-    GlobeIcon,
     GithubIcon,
-    TwitterIcon
+    GlobeIcon
   },
 
   computed: {
