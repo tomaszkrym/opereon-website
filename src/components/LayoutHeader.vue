@@ -65,9 +65,7 @@ query {
   metadata {
     siteName
     settings {
-      web
       github
-      twitter
       nav {
         links {
           path

@@ -1,23 +1,23 @@
-// This is where project configuration and plugin options are located. 
-// Learn more: https://gridsome.org/docs/config
-
-// Changes here require a server restart.
-// To restart press CTRL + C in terminal and run `gridsome develop`
-
 module.exports = {
-  siteName: 'Docc',
+  siteName: 'Opereon',
+  siteDescription: 'Infrastructure management system',
+  siteUrl: 'https://opereon.io',
   icon: {
-    favicon: './src/assets/favicon.png',
-    touchicon: './src/assets/favicon.png'
+    favicon: {
+      src: 'src/assets/opereon-logo.svg',
+      sizes: [16, 32, 96],
+    },
+    touchicon: {
+      src: 'src/assets/opereon-touch-logo.png',
+      sizes: [76, 152, 120, 167, 180],
+      precomposed: false,
+    }
   },
-  siteUrl: (process.env.SITE_URL ? process.env.SITE_URL : 'https://example.com'),
   settings: {
-    web: process.env.URL_WEB || false,
-    twitter: process.env.URL_TWITTER || false,
-    github: process.env.URL_GITHUB || false,
+    github: 'https://github.com/opereon/opereon',
     nav: {
       links: [
-        { path: '/docs/', title: 'Docs' }
+        { path: '/docs/', title: 'Documentation' }
       ]
     },
     sidebar: [
@@ -25,19 +25,21 @@ module.exports = {
         name: 'docs',
         sections: [
           {
-            title: 'Getting Started',
+            title: 'Essentials',
             items: [
               '/docs/',
-              '/docs/installation/',
-              '/docs/writing-content/',
-              '/docs/deploying/',
+              '/docs/quickstart/',
+              '/docs/overview/',
+              '/docs/install/'
             ]
           },
           {
-            title: 'Configuration',
+            title: 'Concepts',
             items: [
-              '/docs/settings/',
-              '/docs/sidebar/',
+              '/docs/model/',
+              '/docs/opath/',
+              '/docs/template/',
+              '/docs/procedures/'
             ]
           }
         ]
@@ -83,7 +85,7 @@ module.exports = {
 
     {
       use: '@gridsome/plugin-sitemap',
-      options: {  
+      options: {
       }
     }
 
