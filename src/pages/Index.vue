@@ -12,7 +12,7 @@
           <p class="text-xl font-medium text-justify">
             Opereon is an easy to use and powerful tool for IT automation, designed with power users in mind. It performs most of the difficult heavy lifting, while giving the user absolute control of what exactly happens in the managed infrastructure.
           </p>
-          <ul class="text-xl font-medium text-justify list-disc">
+          <ul class="text-xl font-medium text-justify list-disc ml-4">
             <li>No external plugins.</li>
             <li>Monolithic and fast executable code with no external dependencies, coded in Rust with love.</li>
             <li>One-size-fits-all solution that enables security and performance conscious users to achieve IT automation.</li>
@@ -32,103 +32,60 @@
 
       <div class="pt-8 mx-auto mt-8 border-t md:mt-16 md:pt-16 border-top border-ui-border max-w-screen-sm"></div>
 
-      <div class="flex flex-wrap justify-center -mx-4">
-<!--        TODO (ak) template-->
-        <div class="flex flex-col items-center w-full px-4 mb-8 text-center md:w-1/3">
-          <ClockIcon size="3x" class="mb-6 text-ui-primary" />
-          <h3 class="font-bold tracking-wide uppercase text-ui-primary">
-            Instant deployment
-          </h3>
-          <p class="text-lg text-center">
-            Agentless, no inherent dependency on host deployed software.
-          </p>
-        </div>
-
-        <div class="flex flex-col items-center w-full px-4 mb-8 text-center md:w-1/3">
-          <TargetIcon size="3x" class="mb-6 text-ui-primary" />
-          <h3 class="font-bold tracking-wide uppercase text-ui-primary">
-            Power of simplicity
-          </h3>
-          <p class="text-lg text-center">
-            Every action on managed hosts is user-defined in form of bash scripts.
-          </p>
-        </div>
-
-        <div class="flex flex-col items-center w-full px-4 mb-8 text-center md:w-1/3">
-          <LockIcon size="3x" class="mb-6 text-ui-primary" />
-          <h3 class="font-bold tracking-wide uppercase text-ui-primary">
-            Security
-          </h3>
-          <p class="text-lg text-center">
-            Opereon uses SSH and RSYNC over SSH to perform actions and modify files on manages hosts.
-          </p>
-        </div>
+      <div class="flex flex-wrap justify-center -mx-4 mb-8">
+        <feature-tile v-for="(f, index) in features" :icon="f.icon" :title="f.title" :desc="f.desc" :icon_style="f.icon_style" :key="index"></feature-tile>
       </div>
 
       <div class="pt-8 mx-auto mt-8 border-t border-top border-ui-border max-w-screen-sm"></div>
-
       <div class="w-full">
-<!--          <img v-if="theme==='theme-dark'" class="mx-auto lg:h-20" src="/eu-logos-dark.png" />
-          <img v-else class="mx-auto lg:h-20" src="/eu-logos-light.png" />-->
-        <g-image src="../assets/eu-logo-light.png" alt="eu" title="eu" immediate="true"></g-image>
+        <g-image v-if="theme.css ==='theme-dark'" src="../../static/eu-logo-dark.png" alt="eu" title="eu" immediate="true"></g-image>
+        <g-image v-else src="../../static/eu-logo-light.png" alt="eu" title="eu" immediate="true"></g-image>
       </div>
 
     </div>
   </Layout>
 </template>
 
+<static-query>
+  query {
+    features: allFeatures {
+      edges {
+        node {
+          features {
+            title
+            desc
+            icon
+            icon_style
+          }
+        }
+      }
+    }
+  }
+</static-query>
+
 <script>
 import Logo from '@/components/Logo';
-import { ArrowRightCircleIcon, ClockIcon, CodeIcon, LockIcon, TargetIcon } from 'vue-feather-icons';
+import FeatureTile from '@/components/FeatureTile';
+import { ArrowRightCircleIcon } from 'vue-feather-icons';
 
 export default {
   components: {
     Logo,
-    ArrowRightCircleIcon,
-    ClockIcon,
-    CodeIcon,
-    LockIcon,
-    TargetIcon
+    FeatureTile,
+    ArrowRightCircleIcon
   },
-
-  metaInfo() {
-    const title = 'Great Documentation starts here';
-    const description = 'DOCC is a starter theme with instant search and dark mode for writing great technical documentation. Based on Gridsome!';
-
-    return {
-      title: title,
-      meta: [
-        {
-          name: 'description',
-          content: description
-        },
-        {
-          key: 'og:title',
-          name: 'og:title',
-          content: title,
-        },
-        {
-          key: 'twitter:title',
-          name: 'twitter:title',
-          content: title,
-        },
-        {
-          key: 'og:description',
-          name: 'og:description',
-          content: description,
-        },
-        {
-          key: 'twitter:description',
-          name: 'twitter:description',
-          content: description,
-        },
-      ]
+  computed: {
+    features () {
+      return this.$static.features.edges[0].node.features
+    },
+    theme () {
+      return this.$store.getters.theme
     }
   }
 }
 </script>
 
-<style>
+<style lang="scss">
 .home-links a {
   margin-right: 1rem;
 }

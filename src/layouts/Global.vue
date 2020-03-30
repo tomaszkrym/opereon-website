@@ -1,5 +1,5 @@
 <template>
-  <div class="font-sans antialiased text-ui-typo bg-ui-background">
+  <div class="font-sans antialiased text-ui-typo bg-ui-background" :class="theme.css">
     <div class="flex flex-col justify-start min-h-screen">
 
       <header
@@ -47,17 +47,18 @@
       <section class="footer-copyright">
         <div class="footer-copyright container mx-auto flex flex-col lg:flex-row items-center justify-between py-4">
           <div class="flex">
-            <span>&copy 2020 Kodegenix</span><span class="footer-ver px-4" :title="versionInfoExt">({{versionInfo}})</span>
+            <span>&copy 2020 Opereon</span>
+<!--            <span class="footer-ver px-4" :title="versionInfoExt">({{versionInfo}})</span>-->
           </div>
           <g-image src="../assets/kodegenix_logo.svg" alt="eu" title="eu" immediate="true" height="200" width="250"></g-image>
-<!--          <div class="flex px-2 sm:px-0">
+          <div class="flex px-2 sm:px-0">
             <div class="mr-4 text-xs sm:text-base">site powered by:</div>
             <ul class="flex flex-1 items-center">
               <li v-for="p in footerProjects" class="mr-4">
-                <a :href="p.url" target="_blank"><g-image :src="theme === 'theme-dark' ? p.logo_dark ? p.logo_dark : p.logo : p.logo" :title="p.name" /></a>
+                <a :href="p.url" target="_blank"><g-image :src="(theme.css === 'theme-dark' && p.logo_dark) ? p.logo_dark : p.logo" :title="p.name" /></a>
               </li>
             </ul>
-          </div>-->
+          </div>
         </div>
       </section>
     </footer>
@@ -68,6 +69,19 @@
 query {
   metadata {
     siteName
+  }
+
+  footerTech: allFooterTech {
+    edges {
+      node {
+        projects {
+          name
+          logo (width: 150, height: 24, fit: inside)
+          logo_dark (width: 150, height: 24, fit: inside)
+          url
+        }
+      }
+    }
   }
 }
 </static-query>
@@ -111,6 +125,12 @@ export default {
     },
     hasSidebar() {
       return this.$page && this.headerHeight > 0;
+    },
+    footerProjects () {
+      return this.$static.footerTech.edges[0].node.projects
+    },
+    theme () {
+      return this.$store.getters.theme
     }
   },
   mounted() {

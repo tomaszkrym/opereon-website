@@ -63,7 +63,20 @@ module.exports = {
         }
       }
     },
-
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        typeName: 'FooterTech',
+        path: 'src/data/footer/footer.yaml',
+      }
+    },
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        typeName: 'Features',
+        path: 'src/data/features.yaml',
+      }
+    },
     {
       use: 'gridsome-plugin-tailwindcss',
       options: {

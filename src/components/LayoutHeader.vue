@@ -43,12 +43,7 @@
             <GithubIcon size="1.5x" />
           </a>
 
-          <ToggleDarkMode class="ml-2 sm:ml-8">
-            <template slot="default" slot-scope="{ dark }">
-              <MoonIcon v-if="dark" size="1.5x" />
-              <SunIcon v-else size="1.5x" />
-            </template>
-          </ToggleDarkMode>
+          <theme-switcher class="ml-2 sm:ml-8" :theme="theme" @themeChanged="updateTheme" />
 
         </div>
       </div>
@@ -75,7 +70,7 @@ query {
 </static-query>
 
 <script>
-import ToggleDarkMode from "@/components/ToggleDarkMode";
+import ThemeSwitcher from '@/components/ThemeSwitcher'
 import { SunIcon, MoonIcon, GithubIcon, GlobeIcon } from "vue-feather-icons";
 
 const Search = () => import(/* webpackChunkName: "search" */ "@/components/Search").catch(error => console.warn(error));
@@ -83,7 +78,7 @@ const Search = () => import(/* webpackChunkName: "search" */ "@/components/Searc
 export default {
   components: {
     Search,
-    ToggleDarkMode,
+    ThemeSwitcher,
     SunIcon,
     MoonIcon,
     GithubIcon,
@@ -96,7 +91,15 @@ export default {
     },
     settings() {
       return this.meta.settings;
+    },
+    theme () {
+      return this.$store.getters.theme
     }
+  },
+  methods: {
+    updateTheme (theme) {
+      this.$store.commit('theme', theme)
+    },
   }
 };
 </script>
