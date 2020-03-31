@@ -10,8 +10,10 @@
         <LayoutHeader />
       </header>
 
+      <div class="container flex justify-center">
+        <h2 class="mt-4 text-center">*** This website is still under active development. ***</h2>
+      </div>
       <main class="container relative flex flex-wrap justify-start flex-1 w-full bg-ui-background">
-
         <aside
           v-if="hasSidebar"
           class="sidebar"
@@ -40,7 +42,7 @@
         <MenuIcon v-else />
       </button>
     </div>
-    <footer class="border-t bg-ui-background border-ui-border">
+    <footer class="border-t bg-ui-tertiary border-ui-border">
 <!--      <client-only>
         <cookies @accept="enableAnalytics()"/>
       </client-only>-->
@@ -50,10 +52,10 @@
             <span>&copy 2020 Opereon</span>
 <!--            <span class="footer-ver px-4" :title="versionInfoExt">({{versionInfo}})</span>-->
           </div>
-          <g-image src="../assets/kodegenix_logo.svg" alt="eu" title="eu" immediate="true" height="200" width="250"></g-image>
+          <g-image src="../assets/kodegenix_logo.svg" alt="eu" title="eu" immediate="true" height="200" width="250" class="mt-1 mb-3 sm:my-0"></g-image>
           <div class="flex px-2 sm:px-0">
             <div class="mr-4 text-xs sm:text-base">site powered by:</div>
-            <ul class="flex flex-1 items-center">
+            <ul class="flex flex-1 items-center mb-0">
               <li v-for="p in footerProjects" class="mr-4">
                 <a :href="p.url" target="_blank"><g-image :src="(theme.css === 'theme-dark' && p.logo_dark) ? p.logo_dark : p.logo" :title="p.name" /></a>
               </li>
@@ -140,26 +142,6 @@ export default {
 </script>
 
 <style lang="scss">
-:root {
-  --color-ui-background: theme('colors.white');
-  --color-ui-typo: theme('colors.gray.700');
-  --color-ui-sidebar: theme('colors.gray.200');
-  --color-ui-border: theme('colors.gray.300');
-  --color-ui-primary: theme('colors.indigo.600');
-}
-
-html[lights-out] {
-  --color-ui-background: theme('colors.gray.900');
-  --color-ui-typo: theme('colors.gray.100');
-  --color-ui-sidebar: theme('colors.gray.800');
-  --color-ui-border: theme('colors.gray.800');
-  --color-ui-primary: theme('colors.indigo.500');
-
-  pre[class*="language-"],
-  code[class*="language-"] {
-    @apply bg-ui-border;
-  }
-}
 
 * {
   transition-property: color, background-color, border-color;
@@ -174,13 +156,11 @@ h2,
 h3,
 h4 {
   @apply leading-snug font-black mb-4 text-ui-typo;
-
   &:hover {
     a::before {
       @apply opacity-100;
     }
   }
-
   a {
     &::before {
       content: "#";
@@ -194,20 +174,19 @@ h4 {
 h1 {
   @apply text-4xl;
 }
-
 h2 {
   @apply text-2xl;
 }
-
 h3 {
   @apply text-xl;
 }
-
 h4 {
   @apply text-lg;
 }
 
-a:not(.active):not(.text-ui-primary):not(.text-white) { @apply text-ui-typo }
+a:not(.active):not(.text-ui-primary):not(.text-white) {
+  @apply text-ui-typo;
+}
 
 p,
 ol,
@@ -217,50 +196,42 @@ strong,
 blockquote {
   @apply mb-4 text-base text-ui-typo;
 }
-
 .content {
+  span {
+    @apply text-ui-accent;
+  }
   a {
     @apply text-ui-primary underline;
   }
-
   h1, h2, h3, h4, h5, h6 {
     @apply -mt-12 pt-20;
   }
-
   h2 + h3,
   h2 + h2,
   h3 + h3 {
     @apply border-none -mt-20;
   }
-
   h2,
   h3 {
     @apply border-b border-ui-border pb-1 mb-3;
   }
-
   ul {
     @apply list-disc;
-
     ul {
       list-style: circle;
     }
   }
-
   ol {
     @apply list-decimal;
   }
-
   ol,
   ul {
     @apply pl-5 py-1;
-
     li {
       @apply mb-2;
-
       p {
         @apply mb-0;
       }
-
       &:last-child {
         @apply mb-0;
       }
@@ -270,7 +241,6 @@ blockquote {
 
 blockquote {
   @apply border-l-4 border-ui-border py-2 pl-4;
-
   p:last-child {
     @apply mb-0;
   }
@@ -280,52 +250,17 @@ code {
   @apply px-1 py-1 text-ui-typo bg-ui-sidebar font-mono border-b border-r border-ui-border text-sm rounded;
 }
 
-pre[class*="language-"] {
-  @apply max-w-full overflow-x-auto rounded;
-
-  & + p {
-    @apply mt-4;
-  }
-
-  & > code[class*="language-"] {
-    @apply border-none leading-relaxed;
-  }
-}
-
 header {
   background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(4px);
 }
 
-table {
-  @apply text-left mb-6;
-
-  td, th {
-    @apply py-3 px-4;
-    &:first-child {
-      @apply pl-0;
-    }
-    &:last-child {
-      @apply pr-0;
-    }
-  }
-
-  tr {
-    @apply border-b border-ui-border;
-    &:last-child {
-      @apply border-b-0;
-    }
-  }
-}
-
 .sidebar {
   @apply fixed bg-ui-background px-4 inset-x-0 bottom-0 w-full border-r border-ui-border overflow-y-auto transition-all z-40;
   transform: translateX(-100%);
-
   &.open {
     transform: translateX(0);
   }
-
   @screen lg {
     @apply w-1/4 px-0 bg-transparent top-0 bottom-auto inset-x-auto sticky z-0;
     transform: translateX(0);

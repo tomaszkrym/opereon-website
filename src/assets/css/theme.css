@@ -1,35 +1,25 @@
 @import 'roboto.css';
 
 .theme-light {
-  --bg-background-primary: #ffffff;
-  --bg-background-secondary: #edf3f8;
-  --bg-background-tertiary: #e2e8f0;
-  --bg-background-reverse: #1F4D66;
-  --bg-background-container: rgba(205, 215, 229, 0.3);
-  --bg-background-form: #ffffff;
-
-  --text-copy-primary: #2d3748;
-  --text-copy-secondary: #a5afc0;
-  --text-copy-link: #3182CE;
-  --text-copy-link-hoover: #2B6CB0;
-
-  --border-primary: #ffffff;
+  --color-ui-background: theme('colors.white');
+  --color-ui-secondary: #edf3f8;
+  --color-ui-tertiary: #e2e8f0;
+  --color-ui-typo: theme('colors.gray.700');
+  --color-ui-sidebar: theme('colors.gray.200');
+  --color-ui-border: theme('colors.gray.300');
+  --color-ui-primary: #0088CC;
+  --color-ui-accent: #e4ac01;
 }
 
 .theme-dark {
-  --bg-background-primary: #0D2438;
-  --bg-background-secondary: #102C44;
-  --bg-background-tertiary: #1E3951;
-  --bg-background-reverse: #e2e8f0;
-  --bg-background-container: rgba(226, 232, 240, 0.2);
-  --bg-background-form: #1a202c;
-
-  --text-copy-primary: #cbd5e0;
-  --text-copy-secondary: #9aafcb;
-  --text-copy-link: #63B3ED;
-  --text-copy-link-hoover: #4299E1;
-
-  --border-primary: #1a202c;
+  --color-ui-background: #192231;
+  --color-ui-secondary: #24344d;
+  --color-ui-tertiary: #131c29;
+  --color-ui-typo: theme('colors.gray.100');
+  --color-ui-sidebar: theme('colors.gray.800');
+  --color-ui-border: theme('colors.gray.800');
+  --color-ui-primary: #33a0d6;
+  --color-ui-accent: #fec503;
 }
 
 body {

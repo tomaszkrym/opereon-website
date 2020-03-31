@@ -4,7 +4,7 @@ module.exports = {
   siteUrl: (process.env.SITE_URL ? process.env.SITE_URL : 'https://opereon.io'),
   icon: {
     favicon: {
-      src: 'src/assets/opereon-logo.svg',
+      src: 'src/assets/opereon-logo-dark.svg',
       sizes: [16, 32, 96],
     },
     touchicon: {

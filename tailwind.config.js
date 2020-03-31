@@ -4,10 +4,13 @@ module.exports = {
       colors: {
         ui: {
           background: 'var(--color-ui-background)',
+          tertiary: 'var(--color-ui-tertiary)',
           sidebar: 'var(--color-ui-sidebar)',
           typo: 'var(--color-ui-typo)',
           primary: 'var(--color-ui-primary)',
-          border: 'var(--color-ui-border)'
+          secondary: 'var(--color-ui-secondary)',
+          border: 'var(--color-ui-border)',
+          accent: 'var(--color-ui-accent)'
         }
       },
       spacing: {

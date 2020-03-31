@@ -3,21 +3,24 @@
     <div class="pt-8 md:pt-16">
       <div class="flex flex-col md:flex-row-reverse items-center">
         <div class="flex flex-col items-center mb-2 text-ui-primary">
-          <g-image src="../assets/conductor.svg" alt="Opereon" title="Opereon" immediate="true" width="512" height="100" class="conductor" />
+          <g-image v-if="theme.css ==='theme-dark'" src="../../static/conductor_dark.svg" alt="Opereon" title="Opereon" immediate="true" width="512" height="100" class="conductor" />
+          <g-image v-else src="../../static/conductor_light.svg" alt="Opereon" title="Opereon" immediate="true" width="512" height="100" class="conductor" />
         </div>
         <div class="flex flex-col items-center md:items-start md:mr-8">
           <h2 class="text-3xl text-6xl font-black tracking-tighter border-none">
             Opereon
           </h2>
-          <p class="text-xl font-medium text-justify">
-            Opereon is an easy to use and powerful tool for IT automation, designed with power users in mind. It performs most of the difficult heavy lifting, while giving the user absolute control of what exactly happens in the managed infrastructure.
-          </p>
-          <ul class="text-xl font-medium text-justify list-disc ml-4">
-            <li>No external plugins.</li>
-            <li>Monolithic and fast executable code with no external dependencies, coded in Rust with love.</li>
-            <li>One-size-fits-all solution that enables security and performance conscious users to achieve IT automation.</li>
-            <li>Community edition available as open source and free of charge, without any limits in functionality.</li>
-          </ul>
+          <div class="content">
+            <p class="text-xl font-medium text-justify">
+              Opereon is an easy to use and powerful tool for IT automation, designed with <span>power users</span> in mind. It performs most of the difficult heavy lifting, while giving the user absolute control of what exactly happens in the managed infrastructure.
+            </p>
+            <ul class="text-xl font-medium text-justify">
+              <li>No external plugins.</li>
+              <li><span>Monolithic</span> and fast executable code with <span>no external dependencies</span>, coded in <a href="https://rust-lang.org" target="_blank" class="text-ui-primary">Rust</a> with love.</li>
+              <li><span>One-size-fits-all</span> solution that enables <span>security</span> and <span>performance</span> conscious users to achieve IT automation.</li>
+              <li>Community edition available as <span>open source</span> and <span>free</span> of charge, without <span>any limits</span> in functionality.</li>
+            </ul>
+          </div>
           <div class="flex mt-8">
             <g-link
               to="/docs/"

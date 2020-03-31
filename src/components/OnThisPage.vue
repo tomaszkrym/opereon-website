@@ -37,7 +37,7 @@
   </div>
 </template>
 
-<script src="../../node_modules/intersection-observer/intersection-observer.js">
+<script>
 // import { IntersectionObserver } from 'intersection-observer/intersection-observer'
 export default {
   data() {
@@ -61,6 +61,9 @@ export default {
       if (process.isClient && window.location.hash) {
         this.activeAnchor = window.location.hash;
       }
+
+      // Clear the current observer.
+      this.observer.disconnect();
 
       // And create another one for the next page.
       this.$nextTick(this.initObserver);
@@ -113,11 +116,6 @@ export default {
       }
       this.$nextTick(this.initObserver);
     }
-  },
-
-  destroyed() {
-    // Clear the current observer.
-    this.observer.disconnect();
   }
 };
 </script>
