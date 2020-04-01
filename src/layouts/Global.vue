@@ -286,6 +286,7 @@ blockquote {
 
 pre[class*="language-"] {
   @apply max-w-full overflow-x-auto rounded;
+  position: relative;
 
   & + p {
     @apply mt-4;

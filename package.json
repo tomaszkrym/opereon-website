@@ -13,6 +13,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/vue-fontawesome": "^0.1.9",
     "@gridsome/transformer-yaml": "^0.2.1",
+    "clipboard": "^2.0.6",
     "core-js": "3",
     "gridsome": "^0.7.0",
     "gridsome-plugin-remark-prismjs-all": "^0.3.5",

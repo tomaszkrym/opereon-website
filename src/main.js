@@ -12,7 +12,7 @@ import { faClock  } from "@fortawesome/free-regular-svg-icons";
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faSuperpowers } from "@fortawesome/free-brands-svg-icons";
 
-library.add(faClock)
+library.add(faClock);
 library.add(faLock);
 library.add(faSuperpowers);
 
