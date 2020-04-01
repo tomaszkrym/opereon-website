@@ -14,7 +14,7 @@
         ref="input"
         type="search"
         :value="query"
-        class="block w-full py-2 pl-10 pr-4 border-2 rounded-lg bg-ui-sidebar border-ui-sidebar focus:bg-ui-background"
+        class="block w-full py-2 pl-10 pr-4 rounded-lg bg-ui-sidebar focus:bg-ui-background"
         :class="{'rounded-b-none': showResult,}"
         placeholder="Search Documentation..."
         @focus="focused = true"
@@ -23,7 +23,7 @@
         @change="query = $event.target.value"
       />
     </label>
-    <div 
+    <div
       v-if="showResult"
       class="fixed inset-x-0 z-50 overflow-y-auto border-2 border-t-0 rounded-lg rounded-t-none shadow-lg results bg-ui-background bottom:0 sm:bottom-auto sm:absolute border-ui-sidebar"
       style="max-height: calc(100vh - 120px)"

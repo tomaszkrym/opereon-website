@@ -17,6 +17,19 @@ const THEMES = [
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
     </svg>
     `.trim()
+  },
+  {
+    label: 'Sepia theme',
+    css: 'theme-sepia',
+    icon: `
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+      <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+      <line x1="6" y1="1" x2="6" y2="4"></line>
+      <line x1="10" y1="1" x2="10" y2="4"></line>
+      <line x1="14" y1="1" x2="14" y2="4"></line>
+    </svg>
+    `.trim()
   }
 ]
 

@@ -26,6 +26,19 @@
   --color-ui-accent: #fec503;
 }
 
+.theme-sepia {
+  --color-ui-background: #f1e7d0;
+  --color-ui-secondary: #eae0c9;
+  --color-ui-tertiary: #eadec2;
+  --color-ui-code: #ffe699;
+  --color-ui-highlight: #fdf6e3;;
+  --color-ui-typo: #433422;
+  --color-ui-sidebar: #e5d6b3;
+  --color-ui-border: #decca0;
+  --color-ui-primary: #0088CC;
+  --color-ui-accent: theme('colors.indigo.600');
+}
+
 body {
   @apply theme-dark;
 }

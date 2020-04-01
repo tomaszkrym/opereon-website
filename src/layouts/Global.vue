@@ -142,20 +142,30 @@ export default {
 </script>
 
 <style lang="scss">
-  @media (min-width: 1600px) {
-    .container {
-      max-width: 1600px;
-    }
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1600px;
   }
+}
 header, footer {
   * {
     transition-property: color, background-color, border-color;
     transition-duration: 200ms;
     transition-timing-function: ease-in-out;
   }
+  input::-webkit-input-placeholder{
+    @apply text-ui-typo opacity-50;
+    }
+  input:-moz-placeholder {
+    @apply text-ui-typo opacity-50;
+    }
 }
 button:focus {
   outline: none;
+}
+input:focus {
+  outline: 0;
+  box-shadow: inset 0 0 0 2px var(--color-ui-primary);
 }
 h1,
 h2,

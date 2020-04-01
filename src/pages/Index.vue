@@ -4,6 +4,7 @@
       <div class="flex flex-col md:flex-row-reverse items-center">
         <div class="flex flex-col items-center mb-2 text-ui-primary">
           <g-image v-if="theme.css ==='theme-dark'" src="../../static/conductor_dark.svg" alt="Opereon" title="Opereon" immediate="true" width="512" height="100" class="conductor" />
+          <g-image v-else-if="theme.css ==='theme-sepia'" src="../../static/conductor_sepia.svg" alt="Opereon" title="Opereon" immediate="true" width="512" height="100" class="conductor" />
           <g-image v-else src="../../static/conductor_light.svg" alt="Opereon" title="Opereon" immediate="true" width="512" height="100" class="conductor" />
         </div>
         <div class="flex flex-col items-center md:items-start md:mr-8">
@@ -42,6 +43,7 @@
       <div class="pt-8 mx-auto mt-8 border-t border-top border-ui-border max-w-screen-sm"></div>
       <div class="w-full">
         <g-image v-if="theme.css ==='theme-dark'" src="../../static/eu-logo-dark.png" alt="eu" title="eu" immediate="true"></g-image>
+        <g-image v-else-if="theme.css ==='theme-sepia'" src="../../static/eu-logo-sepia.png" alt="eu" title="eu" immediate="true"></g-image>
         <g-image v-else src="../../static/eu-logo-light.png" alt="eu" title="eu" immediate="true"></g-image>
       </div>
 
