@@ -48,7 +48,7 @@ query ($id: ID!) {
 <script>
 import OnThisPage from '@/components/OnThisPage.vue';
 import NextPrevLinks from '@/components/NextPrevLinks.vue';
-var Clipboard = require('clipboard/dist/clipboard.min.js')
+const Clipboard = require('clipboard/dist/clipboard.min.js');
 
 export default {
   components: {
