@@ -1,3 +1,6 @@
+require("gridsome-plugin-remark-prismjs-all/themes/night-owl.css");
+require("prismjs/plugins/line-numbers/prism-line-numbers.css");
+
 import './assets/css/main.css'
 import Global from '~/layouts/Global.vue'
 

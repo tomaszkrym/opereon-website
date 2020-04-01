@@ -142,11 +142,17 @@ export default {
 </script>
 
 <style lang="scss">
-
-* {
-  transition-property: color, background-color, border-color;
-  transition-duration: 200ms;
-  transition-timing-function: ease-in-out;
+  @media (min-width: 1600px) {
+    .container {
+      max-width: 1600px;
+    }
+  }
+header, footer {
+  * {
+    transition-property: color, background-color, border-color;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+  }
 }
 button:focus {
   outline: none;
@@ -238,6 +244,24 @@ blockquote {
     }
   }
 }
+.content.markdown {
+  p {
+    text-align: justify;
+  }
+  a:not(.active):not(.text-ui-primary):not(.text-white) {
+    @apply text-ui-primary;
+  }
+  em {
+    font-style: normal;
+    @apply text-ui-accent;
+  }
+/*  .gridsome-highlight {
+    @apply bg-ui-highlight;
+  }*/
+  .gridsome-code-title {
+    @apply bg-ui-code;
+  }
+}
 
 blockquote {
   @apply border-l-4 border-ui-border py-2 pl-4;
@@ -246,8 +270,24 @@ blockquote {
   }
 }
 
-code {
-  @apply px-1 py-1 text-ui-typo bg-ui-sidebar font-mono border-b border-r border-ui-border text-sm rounded;
+:not(pre) > code[class*="language-"], code {
+  @apply text-ui-typo bg-ui-code font-mono border-b border-r border-ui-border text-sm rounded;
+}
+
+pre[class*="language-"] {
+  @apply max-w-full overflow-x-auto rounded;
+
+  & + p {
+    @apply mt-4;
+  }
+
+  & > code[class*="language-"] {
+    @apply border-none leading-relaxed;
+    background: none;
+    .table {
+      display: initial;
+    }
+  }
 }
 
 header {

@@ -123,7 +123,7 @@ empty result.
 
 Every object can also be indexed as an array, where index value will correspond with property position within 
 the object. For example if **current** object will be:
-```json
+```json{numberLines: true}
 {
    "first_name": "John",
    "last_name": "Doe"

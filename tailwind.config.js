@@ -5,6 +5,8 @@ module.exports = {
         ui: {
           background: 'var(--color-ui-background)',
           tertiary: 'var(--color-ui-tertiary)',
+          code: 'var(--color-ui-code)',
+          highlight: 'var(--color-ui-highlight)',
           sidebar: 'var(--color-ui-sidebar)',
           typo: 'var(--color-ui-typo)',
           primary: 'var(--color-ui-primary)',

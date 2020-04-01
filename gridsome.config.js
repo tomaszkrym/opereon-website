@@ -58,7 +58,7 @@ module.exports = {
           externalLinksTarget: '_blank',
           externalLinksRel: ['noopener', 'noreferrer'],
           plugins: [
-            '@gridsome/remark-prismjs'
+            'gridsome-plugin-remark-prismjs-all'
           ]
         }
       }
@@ -102,6 +102,5 @@ module.exports = {
       options: {
       }
     }
-
   ]
 }

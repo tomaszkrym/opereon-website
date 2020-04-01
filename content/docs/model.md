@@ -22,28 +22,24 @@ of our own specialized data query language [Opath](/docs/opath).
 For illustration purposes, consider the following directory, containing some crucial pieces of information about a very 
 simple infrastructure, with one host named `server1` and one user account named `john`.  
 
-{{<code opts="linenos=">}}
-```ascii-tree
-. 
-  hosts/
-    server1/
-      etc/
-        ssh/
-          ssh_host_rsa_key
-          ssh_host_rsa_key.pub
-      _.yaml    
-  users/
-    john/
-      ssh/
-        id_rsa.pub
-      _.json  
 ```
-{{</code>}}
+.
+├── hosts/
+│    └── server1/
+│        ├── etc/
+│        │   └── ssh/
+│        │       ├── ssh_host_rsa_key
+│        │       └── ssh_host_rsa_key.pub
+│        └── _.yaml
+└── users/
+    └── john/
+        ├── ssh/
+        │   └── id_rsa.pub
+        └── _.json
+```
 
 Of particular interest in this discussion are the files presented below:
-
-{{<code file="hosts/server1/_.yaml">}}
-```yaml
+```yaml{numberLines: true}{codeTitle: "hosts/server1/_.yaml"}
 hostname: server1
 domain: example.org
 net:
@@ -54,10 +50,7 @@ net:
       gateway: 192.168.1.1
 packages: [mc, vim, nmap]
 ```
-{{</code>}}
-
-{{<code file="users/john/_.json">}}
-```json
+```json{numberLines: true}{codeTitle: "users/john/_.json"}
 {
   "username": "john",
   "email": "johnny@example.org",
@@ -65,7 +58,6 @@ packages: [mc, vim, nmap]
   "last_name": "Smith"
 }
 ```
-{{</code>}}
 
 which contain some arbitrary metadata about the host `server1` and the user `john` respectively.
  
@@ -95,8 +87,7 @@ transformation are configurable, as described below.
 At the root of file tree representing data model for Opereon, there must be preset a manifest file. Manifest file is by 
 default named `op.toml`
 
-{{<code file="op.toml">}}
-```toml
+```toml{numberLines: true}{codeTitle: "op.toml"}
 [info]
 authors = ["John <johnny@example.org>", "Mark <mark@example.org>"]
 description = "Server farm 1"
@@ -107,8 +98,6 @@ hosts = "$.conf.hosts.*"
 procs = "$.(proc, probe).**[@.proc != null]"
 user_defined_expr_1 = "$.**[custom_property == 'custom_value']"
 ```
-{{</code>}}
-
 
 ### Settings file
 
@@ -118,9 +107,7 @@ into the object tree. The settings are overwritten by a setting file in hierarch
 
 By default, if no `.operc` file is present anywhere in the model, the default settings are used, as presented below. 
 
- 
-{{<code file=".operc">}}
-```toml
+```toml{numberLines: true}{codeTitle: ".operc"}
 inherit_excludes = true
 inherit_includes = true
 inherit_overrides = true
@@ -156,4 +143,3 @@ mapping = "${$.find(array($item.@file_path_components[..-2]).join('.')).set($ite
 # no overrides
 
 ```
-{{</code>}}
