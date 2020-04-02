@@ -38,7 +38,6 @@
 </template>
 
 <script>
-// import { IntersectionObserver } from 'intersection-observer/intersection-observer'
 export default {
   data() {
     return {

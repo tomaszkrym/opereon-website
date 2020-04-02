@@ -50,12 +50,12 @@
         <div class="footer-copyright container mx-auto flex flex-col lg:flex-row items-center justify-between py-4">
           <div class="flex">
             <span>&copy 2020 Opereon</span>
-<!--            <span class="footer-ver px-4" :title="versionInfoExt">({{versionInfo}})</span>-->
+            <span class="footer-ver px-4" :title="versionInfoExt">({{versionInfo}})</span>
           </div>
           <div class="">
             <g-link to="/privacy-policy/">Privacy Policy</g-link>
             <span class="select-none px-2">|</span><g-link to="/terms/">Terms</g-link>
-<!--            <span class="select-none px-2">|</span><g-link to="/sitemap/">Sitemap</g-link>-->
+            <span class="select-none px-2">|</span><g-link to="/sitemap/">Sitemap</g-link>
           </div>
           <g-image src="../assets/kodegenix_logo.svg" alt="eu" title="eu" immediate="true" height="200" width="250" class="mt-1 mb-3 sm:my-0"></g-image>
           <div class="flex px-2 sm:px-0">
@@ -76,8 +76,20 @@
 query {
   metadata {
     siteName
+    repoInfo {
+      sha
+      shaShort
+      branch
+      describe
+      committer
+      committerEmail
+      committerDate
+      author
+      authorEmail
+      authorDate
+      commitMessage
+    }
   }
-
   footerTech: allFooterTech {
     edges {
       node {
@@ -96,9 +108,10 @@ query {
 <script>
 import Sidebar from "@/components/Sidebar";
 import LayoutHeader from "@/components/LayoutHeader";
-import Cookies from '@/components/Cookies'
+import Cookies from '@/components/Cookies';
 import { MenuIcon, XIcon } from 'vue-feather-icons';
 import { bootstrap } from 'vue-gtag';
+import moment from 'moment';
 
 export default {
   components: {
@@ -150,9 +163,32 @@ export default {
     },
     theme () {
       return this.$store.getters.theme
+    },
+    versionInfo () {
+      return this.$static.metadata.repoInfo.describe
+    },
+    versionInfoExt () {
+      if (!this._versionInfoExt) {
+        const repoInfo = this.$static.metadata.repoInfo
+        let ver = ''
+        if (repoInfo.branch) {
+          ver = repoInfo.branch + ': '
+        }
+        if (repoInfo.committerDate) {
+          ver += 'last update on ' + moment(repoInfo.committerDate).format('dddd, YYYY-MM-DD HH:mm') + ' '
+        }
+        if (repoInfo.committer) {
+          ver += 'by ' + repoInfo.committer + ' '
+        }
+        this._versionInfoExt = ver.trim()
+      }
+      return this._versionInfoExt
     }
   },
   mounted() {
+    if (localStorage.getItem('cookie:accepted')) {
+      this.enableAnalytics();
+    }
     this.setHeaderHeight();
   }
 };

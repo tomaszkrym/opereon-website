@@ -23,7 +23,6 @@ query ($id: ID!) {
     title
     description
     path
-    timeToRead
     content
     sidebar
     next

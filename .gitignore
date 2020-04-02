@@ -9,3 +9,5 @@ dist
 
 .idea/
 *.iml
+static/sitemap.xml
+static/sitemap.json

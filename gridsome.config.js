@@ -51,8 +51,8 @@ module.exports = {
     {
       use: '@gridsome/source-filesystem',
       options: {
-        baseDir: './content',
-        path: '**/*.md',
+        baseDir: 'src/content',
+        path: 'docs/*.md',
         typeName: 'MarkdownPage',
         remark: {
           externalLinksTarget: '_blank',
@@ -103,6 +103,7 @@ module.exports = {
     {
       use: '@gridsome/plugin-sitemap',
       options: {
+        cacheTime: 600000, // default
       }
     }
   ]
