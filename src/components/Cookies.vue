@@ -17,12 +17,11 @@
 </template>
 
 <script>
-  import CookieLaw from 'vue-cookie-law'
 
   export default {
     name: "Cookies",
     components: {
-      CookieLaw
+      CookieLaw: () => import('vue-cookie-law')
     },
     computed: {
       theme () {
