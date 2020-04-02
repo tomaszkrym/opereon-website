@@ -43,14 +43,19 @@
       </button>
     </div>
     <footer class="border-t bg-ui-tertiary border-ui-border">
-<!--      <client-only>
+      <client-only>
         <cookies @accept="enableAnalytics()"/>
-      </client-only>-->
+      </client-only>
       <section class="footer-copyright">
         <div class="footer-copyright container mx-auto flex flex-col lg:flex-row items-center justify-between py-4">
           <div class="flex">
             <span>&copy 2020 Opereon</span>
 <!--            <span class="footer-ver px-4" :title="versionInfoExt">({{versionInfo}})</span>-->
+          </div>
+          <div class="">
+            <g-link to="/privacy-policy/">Privacy Policy</g-link>
+            <span class="select-none px-2">|</span><g-link to="/terms/">Terms</g-link>
+<!--            <span class="select-none px-2">|</span><g-link to="/sitemap/">Sitemap</g-link>-->
           </div>
           <g-image src="../assets/kodegenix_logo.svg" alt="eu" title="eu" immediate="true" height="200" width="250" class="mt-1 mb-3 sm:my-0"></g-image>
           <div class="flex px-2 sm:px-0">
@@ -91,14 +96,17 @@ query {
 <script>
 import Sidebar from "@/components/Sidebar";
 import LayoutHeader from "@/components/LayoutHeader";
+import Cookies from '@/components/Cookies'
 import { MenuIcon, XIcon } from 'vue-feather-icons';
+import { bootstrap } from 'vue-gtag';
 
 export default {
   components: {
     Sidebar,
     LayoutHeader,
     MenuIcon,
-    XIcon
+    XIcon,
+    Cookies
   },
   data() {
     return {
@@ -116,6 +124,15 @@ export default {
       this.$nextTick(() => {
         this.headerHeight = this.$refs.header.offsetHeight;
       });
+    },
+    async enableAnalytics () {
+      if (window._analytics === false) {
+        const siteUrl = new URL(this.$static.metadata.siteUrl)
+        if (window.location.hostname.endsWith(siteUrl.hostname)) {
+          await bootstrap();
+        }
+        window._analytics = true;
+      }
     }
   },
   computed: {
@@ -126,7 +143,7 @@ export default {
       }
     },
     hasSidebar() {
-      return this.$page && this.headerHeight > 0;
+      return this.$page && this.$page.allMarkdownPage && this.headerHeight > 0;
     },
     footerProjects () {
       return this.$static.footerTech.edges[0].node.projects
@@ -217,7 +234,10 @@ blockquote {
     @apply text-ui-accent;
   }
   a {
-    @apply text-ui-primary underline;
+    @apply text-ui-primary;
+  }
+  a:hover {
+    @apply underline;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply -mt-12 pt-20;
@@ -260,6 +280,9 @@ blockquote {
   }
   a:not(.active):not(.text-ui-primary):not(.text-white) {
     @apply text-ui-primary;
+  }
+  a:not(.active):not(.text-ui-primary):not(.text-white):hover {
+    @apply underline;
   }
   em {
     font-style: normal;

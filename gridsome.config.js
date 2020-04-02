@@ -78,6 +78,16 @@ module.exports = {
       }
     },
     {
+      use: '@gridsome/vue-remark',
+      options: {
+        typeName: 'Legal',
+        baseDir: 'src/content/legal',
+        path: '**/*.md',
+        route: '/:slug',
+        template: 'src/templates/Legal.vue',
+      }
+    },
+    {
       use: 'gridsome-plugin-tailwindcss',
       options: {
         tailwindConfig: './tailwind.config.js',
@@ -87,13 +97,6 @@ module.exports = {
             /token$/
           ]
         }
-      }
-    },
-
-    {
-      use: '@gridsome/plugin-google-analytics',
-      options: {
-        id: (process.env.GA_ID ? process.env.GA_ID : 'XX-999999999-9')
       }
     },
 

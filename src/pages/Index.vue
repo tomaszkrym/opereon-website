@@ -46,7 +46,6 @@
         <g-image v-else-if="theme.css ==='theme-sepia'" src="../../static/eu-logo-sepia.png" alt="eu" title="eu" immediate="true"></g-image>
         <g-image v-else src="../../static/eu-logo-light.png" alt="eu" title="eu" immediate="true"></g-image>
       </div>
-
     </div>
   </Layout>
 </template>
@@ -69,13 +68,11 @@
 </static-query>
 
 <script>
-import Logo from '@/components/Logo';
 import FeatureTile from '@/components/FeatureTile';
 import { ArrowRightCircleIcon } from 'vue-feather-icons';
 
 export default {
   components: {
-    Logo,
     FeatureTile,
     ArrowRightCircleIcon
   },
