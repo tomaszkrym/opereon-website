@@ -1,19 +1,18 @@
 <template>
-  <div class="font-sans antialiased text-ui-typo bg-ui-background" :class="theme.css">
-    <div class="flex flex-col justify-start min-h-screen">
-
-      <header
-        ref="header"
-        class="sticky top-0 z-10 w-full border-b bg-ui-background border-ui-border"
-        @resize="setHeaderHeight"
-      >
-        <LayoutHeader />
-      </header>
+  <div class="font-sans antialiased text-ui-typo bg-ui-background min-h-screen flex flex-col" :class="theme.css">
+    <header
+      ref="header"
+      class="sticky top-0 z-10 w-full bg-ui-background border-ui-border"
+      @resize="setHeaderHeight"
+    >
+      <LayoutHeader />
+    </header>
+    <div class="flex flex-grow flex-col justify-start">
 
       <div class="container flex justify-center">
         <h2 class="mt-4 text-center">*** This website is still under active development. ***</h2>
       </div>
-      <main class="container relative flex flex-wrap justify-start flex-1 w-full bg-ui-background">
+      <main class="container relative flex-grow flex flex-wrap justify-start flex-1 w-full bg-ui-background">
         <aside
           v-if="hasSidebar"
           class="sidebar"
@@ -201,7 +200,14 @@ export default {
     max-width: 1600px;
   }
 }
+header {
+  @apply border-t-4;
+  border-image: linear-gradient(90deg, #5a67d8, #4299E1 60%, #fec503) 5;
+}
 header, footer {
+  img {
+    min-width: 40px;
+  }
   * {
     transition-property: color, background-color, border-color;
     transition-duration: 200ms;
@@ -213,6 +219,19 @@ header, footer {
   input:-moz-placeholder {
     @apply text-ui-typo opacity-50;
     }
+  .main-nav {
+    flex-wrap: nowrap;
+  }
+  @media (max-width: 767px) {
+    .main-nav {
+      order: 10;
+      min-width: 90%;
+      a {
+        padding-top: 5px;
+        padding-bottom: 10px;
+      }
+    }
+  }
 }
 button:focus {
   outline: none;

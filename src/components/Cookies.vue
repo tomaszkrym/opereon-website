@@ -1,11 +1,8 @@
 <template>
   <cookie-law theme="custom" button-text="Accept" class="px-4" v-on:accept="$emit('accept')">
-    <div slot="message" class="flex flex-wrap">
-      <div class="mx-auto">
-        <g-image v-if="theme.css ==='theme-dark'" src="../assets/opereon-logo-dark.svg" alt="Opereon" title="Opereon" width="64" height="64"/>
-        <g-image v-else src="../assets/opereon-logo-light.svg" alt="Opereon" title="Opereon" width="64" height="64"/>
-      </div>
-      <div class="mx-auto flex-auto">
+    <div slot="message" class="flex flex-wrap lg:flex-no-wrap">
+      <Logo class="mx-auto text-ui-primary flex items-center" width="60"/>
+      <div class="mx-auto flex-auto mt-2 lg:mt-0">
         We use <b>cookies</b> and <b>other tracking technologies</b> to improve your browsing experience on our website,
         to analyze our website traffic,<br/>
         and to understand where our visitors are coming from. For further details, please refer to
@@ -17,10 +14,11 @@
 </template>
 
 <script>
-
+  import Logo from '@/components/Logo';
   export default {
     name: "Cookies",
     components: {
+      Logo,
       CookieLaw: () => import('vue-cookie-law')
     },
     computed: {
@@ -73,7 +71,7 @@
     }
     .Cookie__button:hover {
       color: #fec503;
-      transform: translateY(-0.25rem);
+      transform: rotate3d(1, 0, 1, 20deg);
     }
     a:not(.active):not(.text-ui-primary):not(.text-white) {
       @apply text-ui-primary;

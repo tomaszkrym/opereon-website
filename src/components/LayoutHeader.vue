@@ -1,52 +1,49 @@
 <template>
-  <div class="py-2 border-t-2 bg-ui-tertiary">
+  <div class="py-2 bg-ui-tertiary">
     <div class="container">
+      <div class="flex flex-wrap items-center justify-between -mx-2">
 
-      <div class="flex flex-col items-center px-2 mr-auto md:px-4 md:flex-row flex-1 -mx-2 md:-mx-4">
-        <div class="flex items-center justify-between flex-row w-full md:w-auto">
+        <div class="flex flex-col items-center px-2 mr-auto sm:flex-row">
           <g-link
             to="/"
             class="flex items-center text-ui-primary"
             title="Home"
           >
-            <g-image v-if="theme.css ==='theme-dark'" src="../assets/opereon-logo-dark.svg" alt="Opereon" title="Opereon" immediate="true" width="260" height="40" fit="inside"/>
-            <g-image v-else src="../assets/opereon-logo-light.svg" alt="Opereon" title="Opereon" immediate="true" width="260" height="40" fit="inside"/>
-            <span class="ml-2 text-xl font-black tracking-tighter uppercase block">
+            <Logo class="text-ui-primary" />
+            <span class="hidden ml-2 text-xl font-black tracking-tighter uppercase md:block">
               {{ meta.siteName }}
             </span>
           </g-link>
-          <div class="block md:hidden">
-            <button @click="toggle" class="flex items-center px-3 py-2 border rounded border-gray-500 hover:text-gray-600 hover:border-gray-600">
-              <svg class="current-color h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" fill="gray" /></svg>
-            </button>
-          </div>
         </div>
-        <div class="tracking-wide font-bold w-full block flex-grow md:flex md:w-auto items-center mt-8 md:mt-0" :class="opened ? 'block': 'hidden'">
-          <div v-if="settings.nav.links.length > 0" class="uppercase md:capitalize mb-4 md:mb-0 mx-4 block md:ml-8">
-            <g-link
-              v-for="link in settings.nav.links"
-              :key="link.path"
-              :to="link.path"
-              class="block md:p-1 font-medium nav-link text-ui-typo hover:text-ui-primary"
-            >
-              {{ link.title }}
-            </g-link>
-          </div>
-          <div class="mb-4 md:mb-0 px-2 sm:px-4 max-w-screen-xs flex-1">
+
+        <nav v-if="settings.nav.links.length > 0" class="main-nav mt-2 md:mt-0 ml-2 md:ml-8">
+          <g-link
+            v-for="link in settings.nav.links"
+            :key="link.path"
+            :to="link.path"
+            class="block md:p-1 font-medium nav-link text-ui-typo hover:text-ui-primary"
+          >
+            {{ link.title }}
+          </g-link>
+        </nav>
+
+        <div class="flex flex-1">
+          <div class="w-full px-2 sm:px-4 max-w-screen-xs">
             <ClientOnly>
               <Search />
             </ClientOnly>
           </div>
-          <div class="flex flex-col md:items-center md:flex-row md:justify-end px-2 sm:px-4">
-            <a v-if="settings.web" :href="settings.web" class="mb-4 md:mb-0 md:ml-3" target="_blank" rel="noopener noreferrer" title="Kodegenix" name="Kodegenix">
+          <div class="flex items-center justify-end px-2 sm:px-4">
+            <a v-if="settings.web" :href="settings.web" class="ml-3" target="_blank" rel="noopener noreferrer" title="Website" name="Website">
               <GlobeIcon size="1.5x" />
             </a>
-            <a v-if="settings.github" :href="settings.github" class="mb-4 md:mb-0 md:ml-3" target="_blank" rel="noopener noreferrer" title="Github" name="Github">
+            <a v-if="settings.github" :href="settings.github" class="ml-3" target="_blank" rel="noopener noreferrer" title="Github" name="Github">
               <GithubIcon size="1.5x" />
             </a>
-            <theme-switcher class="mb-4 md:mb-0 md:ml-8" :theme="theme" @themeChanged="updateTheme" />
+            <theme-switcher class="ml-3 sm:ml-8" :theme="theme" @themeChanged="updateTheme" />
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -72,6 +69,7 @@ query {
 
 <script>
 import ThemeSwitcher from '@/components/ThemeSwitcher'
+import Logo from '@/components/Logo';
 import { SunIcon, MoonIcon, GithubIcon, GlobeIcon } from "vue-feather-icons";
 
 const Search = () => import(/* webpackChunkName: "search" */ "@/components/Search").catch(error => console.warn(error));
@@ -83,7 +81,8 @@ export default {
     SunIcon,
     MoonIcon,
     GithubIcon,
-    GlobeIcon
+    GlobeIcon,
+    Logo
   },
   data() {
     return {
