@@ -29,7 +29,7 @@ module.exports = function (api) {
         const html = fs.readFileSync(page.htmlOutput)
         const $ = cheerio.load(html)
 
-        let title = $('head > title').text().replace(/ \| .+?$/, '')
+        let title = $('head > title').text().replace(/ \| .+?$/, '');
 
         pages.push({
           url: page.location.path,

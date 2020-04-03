@@ -26,7 +26,6 @@
       if (!process.isClient) {
         return
       }
-
       try {
         const res = await fetch('/sitemap.json')
         const sitemap = await res.json()
@@ -41,7 +40,16 @@
 
 <style lang="scss">
   .sitemap {
-    @apply text-xl;
+    * {
+      @apply text-xl;
+    }
+
+    a:not(.active):not(.text-ui-primary):not(.text-white) {
+      @apply text-ui-primary;
+    }
+    a:not(.active):not(.text-ui-primary):not(.text-white):hover {
+      @apply underline;
+    }
 
     & ul {
       list-style: disc;

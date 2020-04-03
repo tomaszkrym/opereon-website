@@ -45,6 +45,10 @@ export default function (Vue, { router, head, appOptions, isClient }) {
     content: 'Opereon website'
   })
 
+  head.titleTemplate = function (titleChunk) {
+    return titleChunk ? `${titleChunk} | Opereon` : 'Opereon'
+  }
+
   router.beforeEach((to, _from, next) => {
     head.meta.push({
       key: 'og:url',

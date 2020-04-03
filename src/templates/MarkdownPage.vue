@@ -52,6 +52,11 @@ import NextPrevLinks from '@/components/NextPrevLinks.vue';
 const Clipboard = require('clipboard/dist/clipboard.min.js');
 
 export default {
+  metaInfo() {
+    return {
+      title: this.$page.markdownPage.title
+    }
+  },
   components: {
     OnThisPage,
     NextPrevLinks
