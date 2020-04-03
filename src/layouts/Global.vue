@@ -76,6 +76,7 @@
 query {
   metadata {
     siteName
+    siteUrl
     repoInfo {
       sha
       shaShort
