@@ -1,5 +1,5 @@
 <template>
-  <div class="py-2 bg-ui-tertiary">
+  <div class="pt-2 md:py-2 bg-ui-tertiary">
     <div class="container">
       <div class="flex flex-wrap items-center justify-between -mx-2">
 
