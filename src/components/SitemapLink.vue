@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a :href="page.url">{{ page.title }}</a>
+    <a :href="page.path">{{ page.title }}</a>
     <ul v-if="page.pages && page.pages.length">
       <li v-for="(p, index) in page.pages" :key="index">
         <sitemap-link :page="p" />

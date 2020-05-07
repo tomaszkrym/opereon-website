@@ -99,9 +99,13 @@ module.exports = {
         }
       }
     },
-
     {
-      use: '@gridsome/plugin-sitemap',
+      use: 'gridsome-plugin-search',
+      options: {
+      }
+    },
+    {
+      use: 'gridsome-plugin-sitemap',
       options: {
         cacheTime: 600000, // default
       }
