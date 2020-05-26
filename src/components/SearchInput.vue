@@ -6,7 +6,7 @@
             <input
                     type="text"
                     placeholder="Search"
-                    class="bg-background-form w-full lg:w-64 border-2 border-transparent rounded-lg px-4 pl-10 py-2 outline-none focus:border-blue-600"
+                    class="block w-full py-2 pl-10 pr-4 rounded-lg bg-ui-sidebar focus:bg-ui-background"
                     v-model="query"
                     @input="softReset"
                     @keyup="performSearch"
@@ -25,7 +25,7 @@
             <div v-if="query.length > 0" class="absolute top-0 right-0 text-2xl mr-3 mt-1 cursor-pointer text-gray-500 hover:text-gray-600" @click="reset">&times;</div>
         </div>
         <transition name="fade">
-            <div v-if="query.length > 0 && searchResultsVisible" class="normal-case absolute border-2 right-0 min-w-full sm:min-w-none max-w-full sm:max-w-none text-left mb-4 mt-2 rounded-lg shadow overflow-hidden z-10 overflow-y-auto search-results" style="max-height: 32rem">
+            <div v-if="query.length > 0 && searchResultsVisible" class="fixed inset-x-0 z-50 overflow-y-auto border-2 border-t-0 rounded-lg rounded-t-none shadow-lg results bg-ui-background bottom:0 sm:bottom-auto sm:absolute border-ui-sidebar" style="max-height: calc(100vh - 120px)">
                 <div class="flex flex-col" ref="results">
                     <a v-for="(page, index) in results"
                        :key="index"
@@ -33,8 +33,8 @@
                        @click="reset"
                        class="bg-background-form border-b border-gray-400 cursor-pointer p-4 search-hover"
                        :class="{ 'search-highlighted' : index === highlightedIndex }">
-                        <span class="block text-xl" v-html="resultTitle(page)"/>
-                        <span class="block font-normal text-copy-primary text-sm my-1" v-html="resultContent(page)"/>
+                        <span class="resultTittle" v-html="resultTitle(page)"/> <!--hover:text-blue-600 block text-xl-->
+                        <span class="resultContent" v-html="resultContent(page)"/> <!--block font-normal text-copy-primary text-sm my-1-->
                     </a>
 
                     <div v-if="results.length === 0" class="bg-background-form font-normal w-full border-b cursor-pointer p-4">
@@ -204,5 +204,24 @@
         .search-match {
             background-color: rgba(yellow, 0.2);
         }
+    }
+
+    .resultTittle {
+        display: block;
+        font-size: 1.25rem;
+    }
+
+    .resultContent {
+        display: block;
+        font-size: .875rem;
+        font-weight: 400;
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+        /*text-copy-primary*/
+    }
+
+    .flex.flex-col a:hover span.resultContent,
+    .flex.flex-col a:hover span.resultTittle {
+        color: #0088CC;
     }
 </style>
