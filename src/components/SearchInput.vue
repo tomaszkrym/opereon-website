@@ -217,11 +217,10 @@
         font-weight: 400;
         margin-top: 0.25rem;
         margin-bottom: 0.25rem;
-        /*text-copy-primary*/
     }
 
     .flex.flex-col a:hover span.resultContent,
     .flex.flex-col a:hover span.resultTittle {
-        color: #0088CC;
+        color: var(--color-ui-primary);
     }
 </style>
