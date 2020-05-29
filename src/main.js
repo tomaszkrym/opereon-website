@@ -7,6 +7,7 @@ import Page from '~/layouts/Page.vue'
 
 import Vuex from 'vuex'
 import store from './store'
+import VueFuse from 'vue-fuse'
 import VueGtag from "vue-gtag";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { config, library } from '@fortawesome/fontawesome-svg-core'
@@ -26,6 +27,8 @@ export default function (Vue, { router, head, appOptions, isClient }) {
   Vue.component('Layout', Global);
   Vue.component('PageLayout', Page);
   Vue.component('font-awesome', FontAwesomeIcon);
+
+  Vue.use(VueFuse)
 
   if (isClient && process.env.NODE_ENV === 'production') {
     window._analytics = false;

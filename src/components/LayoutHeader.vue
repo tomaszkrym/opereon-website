@@ -28,9 +28,9 @@
         </nav>
 
         <div class="flex flex-1">
-          <div class="w-full px-2 sm:px-4 max-w-screen-xs">
+          <div class="w-full font-bold px-2 sm:px-4 max-w-screen-xs">
             <ClientOnly>
-              <Search />
+              <SearchInput />
             </ClientOnly>
           </div>
           <div class="flex items-center justify-end px-2 sm:px-4">
@@ -71,12 +71,12 @@ query {
 import ThemeSwitcher from '@/components/ThemeSwitcher'
 import Logo from '@/components/Logo';
 import { SunIcon, MoonIcon, GithubIcon, GlobeIcon } from "vue-feather-icons";
+import SearchInput from "./SearchInput";
 
-const Search = () => import(/* webpackChunkName: "search" */ "@/components/Search").catch(error => console.warn(error));
 
 export default {
   components: {
-    Search,
+    SearchInput,
     ThemeSwitcher,
     SunIcon,
     MoonIcon,
