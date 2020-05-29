@@ -6,7 +6,7 @@
             <input
                     type="text"
                     placeholder="Search"
-                    class="block w-full py-2 pl-10 pr-4 rounded-lg bg-ui-sidebar focus:bg-ui-background"
+                    class="bg-background-form w-full border-2 border-transparent rounded-lg px-4 pl-10 py-2 outline-none focus:border-blue-600"
                     v-model="query"
                     @input="softReset"
                     @keyup="performSearch"
@@ -22,10 +22,10 @@
                     <path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
                 </svg>
             </div>
-            <div v-if="query.length > 0" class="absolute top-0 right-0 text-2xl mr-3 mt-1 cursor-pointer text-gray-500 hover:text-gray-600" @click="reset">&times;</div>
+            <div v-if="query.length > 0" class="absolute top-0 right-0 text-2xl mr-3 cursor-pointer text-gray-500 hover:text-gray-600" @click="reset">&times;</div>
         </div>
         <transition name="fade">
-            <div v-if="query.length > 0 && searchResultsVisible" class="fixed inset-x-0 z-50 overflow-y-auto border-2 border-t-0 rounded-lg rounded-t-none shadow-lg results bg-ui-background bottom:0 sm:bottom-auto sm:absolute border-ui-sidebar" style="max-height: calc(100vh - 120px)">
+            <div v-if="query.length > 0 && searchResultsVisible" class="search-results fixed inset-x-0 z-50 overflow-y-auto border-2 border-t-0 rounded-lg rounded-t-none shadow-lg results bg-ui-background bottom:0 sm:bottom-auto sm:absolute border-ui-sidebar" style="max-height: calc(100vh - 120px)">
                 <div class="flex flex-col" ref="results">
                     <a v-for="(page, index) in results"
                        :key="index"

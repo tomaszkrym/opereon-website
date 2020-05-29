@@ -201,6 +201,7 @@ export default {
   }
 }
 header {
+  opacity: 0.96;
   @apply border-t-4;
   border-image: linear-gradient(90deg, #5a67d8, #4299E1 60%, #fec503) 5;
 }
@@ -238,7 +239,6 @@ button:focus {
 }
 input:focus {
   outline: 0;
-  box-shadow: inset 0 0 0 2px var(--color-ui-primary);
 }
 h1,
 h2,
