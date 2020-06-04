@@ -54,8 +54,13 @@ const Clipboard = require('clipboard/dist/clipboard.min.js');
 export default {
   metaInfo() {
     return {
-      title: this.$page.markdownPage.title
-    }
+      title: this.$page.markdownPage.title,
+      meta: [
+      { property: 'og:title', key: 'og:title', content: this.$page.markdownPage.title },
+      { property: 'og:description', key: 'og:description', content: this.$page.markdownPage.description },
+    ],
+
+  }
   },
   components: {
     OnThisPage,

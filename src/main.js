@@ -38,26 +38,11 @@ export default function (Vue, { router, head, appOptions, isClient }) {
     }, router)
   }
 
-  head.meta.push({
-    name: 'keywords',
-    content: 'opereon, kodegenix, infrastructure, development, rust'
-  })
-
-  head.meta.push({
-    name: 'description',
-    content: 'Opereon website'
-  })
-
-  head.titleTemplate = function (titleChunk) {
-    return titleChunk ? `${titleChunk} | Opereon` : 'Opereon'
-  }
-
-  router.beforeEach((to, _from, next) => {
-    head.meta.push({
-      key: 'og:url',
-      name: 'og:url',
-      content: process.env.GRIDSOME_BASE_PATH + to.path,
-    })
-    next()
+  Vue.mixin({
+    computed: {
+      app () {
+        return this.$root.$children[0]
+      },
+    }
   })
 }

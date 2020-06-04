@@ -38,13 +38,19 @@ const theme = process.isClient ? localStorage.getItem('theme') || 'theme-dark' :
 export default {
   state: {
     themes: THEMES,
-    theme: THEMES.find(t => t.css === theme),
+    theme: THEMES[1]
   },
   getters: {
     themes: state => state.themes,
     theme: state => state.theme,
   },
   mutations: {
+    init (state) {
+      const theme = localStorage.getItem('theme')
+      if (theme) {
+        state.theme = THEMES.find(t => t.css === theme) || THEMES[1]
+      }
+    },
     theme (state, theme) {
       if (state.themes.indexOf(theme) !== -1) {
         state.theme = theme

@@ -43,7 +43,7 @@
     </div>
     <footer class="border-t bg-ui-tertiary border-ui-border">
       <client-only>
-        <cookies @accept="enableAnalytics()"/>
+        <cookies @accept="app.enableAnalytics()"/>
       </client-only>
       <section class="footer-copyright">
         <div class="footer-copyright container mx-auto flex flex-col lg:flex-row items-center justify-between py-4">
@@ -73,23 +73,6 @@
 
 <static-query>
 query {
-  metadata {
-    siteName
-    siteUrl
-    repoInfo {
-      sha
-      shaShort
-      branch
-      describe
-      committer
-      committerEmail
-      committerDate
-      author
-      authorEmail
-      authorDate
-      commitMessage
-    }
-  }
   footerTech: allFooterTech {
     edges {
       node {
@@ -137,15 +120,6 @@ export default {
       this.$nextTick(() => {
         this.headerHeight = this.$refs.header.offsetHeight;
       });
-    },
-    async enableAnalytics () {
-      if (window._analytics === false) {
-        const siteUrl = new URL(this.$static.metadata.siteUrl)
-        if (window.location.hostname.endsWith(siteUrl.hostname)) {
-          await bootstrap();
-        }
-        window._analytics = true;
-      }
     }
   },
   computed: {
@@ -165,11 +139,11 @@ export default {
       return this.$store.getters.theme
     },
     versionInfo () {
-      return this.$static.metadata.repoInfo.describe
+      return this.app.metadata.repoInfo.describe
     },
     versionInfoExt () {
       if (!this._versionInfoExt) {
-        const repoInfo = this.$static.metadata.repoInfo
+        const repoInfo = this.app.metadata.repoInfo
         let ver = ''
         if (repoInfo.branch) {
           ver = repoInfo.branch + ': '
@@ -186,9 +160,6 @@ export default {
     }
   },
   mounted() {
-    if (localStorage.getItem('cookie:accepted')) {
-      this.enableAnalytics();
-    }
     this.setHeaderHeight();
   }
 };

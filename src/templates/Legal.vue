@@ -29,7 +29,11 @@
   export default {
     metaInfo() {
       return {
-        title: this.$page.markdownPage.title
+        title: this.title,
+        meta: [
+          { property: 'og:title', key: 'og:title', content: this.title },
+          { property: 'og:description', key: 'og:description', content: this.subtitle },
+        ]
       }
     },
     computed: {

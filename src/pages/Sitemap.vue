@@ -11,7 +11,11 @@
 
   export default {
     metaInfo: {
-      title: 'Sitemap'
+      title: 'Sitemap',
+      meta: [
+        { property: 'og:title', key: 'og:title', content: 'Sitemap' },
+        { property: 'og:description', key: 'og:description', content: 'Opereon website sitemap' },
+      ]
     },
     components: {
       SitemapLink,

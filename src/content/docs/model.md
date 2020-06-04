@@ -1,5 +1,5 @@
 ---
-description: 'This chapter contains describes data model for managed infrastructure'
+description: 'Data model for managed infrastructure'
 sidebar: 'docs'
 prev: '/docs/install/'
 next: '/docs/opath/'

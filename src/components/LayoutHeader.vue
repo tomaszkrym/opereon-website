@@ -40,7 +40,7 @@
             <a v-if="settings.github" :href="settings.github" class="ml-3" target="_blank" rel="noopener noreferrer" title="Github" name="Github">
               <GithubIcon size="1.5x" />
             </a>
-            <theme-switcher class="ml-3 sm:ml-8" :theme="theme" @themeChanged="updateTheme" />
+            <theme-switcher class="ml-3 sm:ml-8" :theme="theme" @themeChanged="app.updateTheme" />
           </div>
         </div>
 
@@ -101,9 +101,6 @@ export default {
     }
   },
   methods: {
-    updateTheme (theme) {
-      this.$store.commit('theme', theme)
-    },
     toggle () {
       this.opened = !this.opened
     }

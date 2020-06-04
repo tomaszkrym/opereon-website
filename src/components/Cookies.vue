@@ -1,7 +1,7 @@
 <template>
   <cookie-law theme="custom" button-text="Accept" class="px-4" v-on:accept="$emit('accept')">
     <div slot="message" class="flex flex-wrap lg:flex-no-wrap">
-      <Logo class="mx-auto text-ui-primary flex items-center" width="60"/>
+      <Logo class="mx-auto text-ui-primary flex items-center" :width="logoWidth"/>
       <div class="mx-auto flex-auto mt-2 lg:mt-0">
         We use <b>cookies</b> and <b>other tracking technologies</b> to improve your browsing experience on our website,
         to analyze our website traffic,<br/>
@@ -20,6 +20,11 @@
     components: {
       Logo,
       CookieLaw: () => import('vue-cookie-law')
+    },
+    data() {
+      return {
+        logoWidth: 60
+      }
     },
     computed: {
       theme () {

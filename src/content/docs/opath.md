@@ -32,7 +32,7 @@ All data types transferable through `json`, `yaml` and `toml` formats are suppor
 
 ## Type conversions
 
-Same as ECMAScript, integers promoted to floats when mixed operands (do rozwiniecia)
+Same as ECMAScript, integers are promoted to floats when mixed operands are used.
 
 ## Mathematical operators
 

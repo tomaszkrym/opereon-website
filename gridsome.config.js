@@ -1,7 +1,7 @@
 module.exports = {
   siteName: 'Opereon',
   siteDescription: 'Infrastructure management system',
-  siteUrl: (process.env.SITE_URL ? process.env.SITE_URL : 'https://opereon.io'),
+  siteUrl: 'https://opereon.io',
   icon: {
     favicon: {
       src: 'src/assets/opereon-logo-dark.svg',
