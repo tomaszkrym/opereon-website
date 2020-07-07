@@ -1,7 +1,7 @@
 @import 'roboto.css';
 
 .theme-light {
-  --color-ui-background: theme('colors.white');
+  --color-ui-background: #fff;
   --color-ui-secondary: #edf3f8;
   --color-ui-tertiary: #e2e8f0;
   --color-ui-code: #e2e8f0;

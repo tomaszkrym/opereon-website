@@ -56,9 +56,9 @@
             <span class="select-none px-2">|</span><g-link to="/terms/">Terms</g-link>
             <span class="select-none px-2">|</span><g-link to="/sitemap/">Sitemap</g-link>
           </div>
-          <g-image src="../assets/kodegenix_logo.svg" alt="eu" title="eu" immediate="true" height="200" width="250" class="mt-1 mb-3 sm:my-0"></g-image>
+          <a href="https://kodegenix.pl/" target="_blank"><g-image src="../assets/kodegenix_logo.svg" alt="kodegenix_logo" title="Kodegenix website" immediate="true" height="200" width="250" class="mt-1 mb-3 sm:my-0"></g-image></a>
           <div class="flex px-2 sm:px-0">
-            <div class="mr-4 text-xs sm:text-base">site powered by:</div>
+            <div class="mr-4 self-center text-xs sm:text-base">site powered by:</div>
             <ul class="flex flex-1 items-center mb-0">
               <li v-for="p in footerProjects" class="mr-4">
                 <a :href="p.url" target="_blank"><g-image :src="(theme.css === 'theme-dark' && p.logo_dark) ? p.logo_dark : p.logo" :title="p.name" /></a>
