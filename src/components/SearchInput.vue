@@ -189,6 +189,7 @@
     .search-bar {
         input {
             transition: 0.3s border;
+            background-color: var(--color-ui-sidebar);
         }
     }
 

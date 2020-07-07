@@ -14,7 +14,6 @@ module.exports = {
     }
   },
   settings: {
-    web: 'https://kodegenix.pl/',
     github: 'https://github.com/opereon/opereon',
     nav: {
       links: [
