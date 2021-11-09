@@ -156,7 +156,8 @@ The presented above data model is loaded with given settings into object tree pr
             "email": "johnny@example.org",
             "first_name": "John",
             "last_name": "Smith"
-        },
+        }
+    },
     "hosts": {
         "server1": {
             "hostname": "server1",
