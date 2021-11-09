@@ -9,8 +9,8 @@ next: '/docs/opath/'
 
 In our approach to ICT automation, everything is built around a concept of **data model** representing every piece of significant 
 information about the managed infrastructure in the form of a **versioned** **file tree**. All of the necessary facts about 
-managed hosts, users, services, etc. are represented by set of (mostly) textual files, that are easy to edit and 
-maintain.
+actors (managed hosts, users, services, etc.) are represented by set of (mostly) textual files, that are easy to edit and 
+maintain. The organizational structure of actors can be reflected by file tree structure.
 
 The model is kept in a single [git](https://git-scm.com) repository for change tracking. When used, the 
 data from files is then transformed into an generalized object tree, which can be traversed and searched with the use 
