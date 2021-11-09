@@ -158,6 +158,20 @@ The presented above data model is loaded with given settings into object tree pr
             "last_name": "Smith"
         },
     "hosts": {
+        "server1": {
+            "hostname": "server1",
+            "domain": "example.org",
+            "net": {
+                "eth0": {
+                    "ip4": {
+                        "address": "192.168.1.100",
+                        "mask": "255.255.255.0",
+                        "gateway": "192.168.1.1"
+                    }
+                }
+            },
+            "packages": ["mc", "vim", "nmap"]
+        }
     }
 }
 ```
