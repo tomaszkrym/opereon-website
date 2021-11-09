@@ -143,3 +143,21 @@ mapping = "${$.find(array($item.@file_path_components[..-2]).join('.')).set($ite
 # no overrides
 
 ```
+
+### Object tree
+
+The presented above data model is loaded with given settings into object tree presented in JSON: 
+
+```
+{
+    "users": { 
+        "john" : {
+            "username": "john",
+            "email": "johnny@example.org",
+            "first_name": "John",
+            "last_name": "Smith"
+        },
+    "hosts": {
+    }
+}
+```
