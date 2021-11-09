@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/opereon-web.iml" filepath="$PROJECT_DIR$/opereon-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/opereon-website.iml" filepath="$PROJECT_DIR$/opereon-website.iml" />
     </modules>
   </component>
 </project>
