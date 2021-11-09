@@ -6,5 +6,7 @@
     "dark": "/opereon-logo-dark.svg"
   },
   "github": "opereon/opereon-website",
+  "defaultBranch": "master",
+  "defaultDir": "",
   "twitter": "opereon"
 }
